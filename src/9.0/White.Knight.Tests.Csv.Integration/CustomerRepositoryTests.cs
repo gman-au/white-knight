@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Csv.Injection;
 using White.Knight.Tests.Csv.Unit.Repository;
 using White.Knights.Tests.Integration;
+using TestContextBase = White.Knights.Tests.Integration.Context.TestContextBase;
 
 namespace White.Knight.Tests.Csv.Integration
 {
@@ -19,11 +20,18 @@ namespace White.Knight.Tests.Csv.Integration
         }
 
         [Fact]
-        public async Task Test_The_Test()
+        public async Task Test_Search_All_Users()
         {
             await
                 _context
                     .ArrangeTableDataAsync();
+
+            await
+                _context
+                    .ActSearchByAll();
+
+            _context
+                .AssertRecordCountFour();
         }
 
         private class CsvRepositoryTestContext : TestContextBase
@@ -42,17 +50,6 @@ namespace White.Knight.Tests.Csv.Integration
                     .AddCsvRepositoryOptions();
 
                 LoadServiceProvider();
-            }
-
-            public async Task ArrangeTableDataAsync()
-            {
-                var testHarness =
-                    ServiceProvider
-                        .GetRequiredService<ITestHarness>();
-
-                await
-                    testHarness
-                        .LoadTableDataAsync();
             }
         }
     }

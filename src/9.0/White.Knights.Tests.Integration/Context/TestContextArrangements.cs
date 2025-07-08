@@ -1,12 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using White.Knight.Interfaces;
+using White.Knight.Tests.Domain;
 
-namespace White.Knights.Tests.Integration
+namespace White.Knights.Tests.Integration.Context
 {
-    public class TestContextBase
+    public partial class TestContextBase
     {
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
@@ -37,6 +40,21 @@ namespace White.Knights.Tests.Integration
             ServiceProvider =
                 ServiceCollection
                     .BuildServiceProvider();
+
+            _sut =
+                ServiceProvider
+                    .GetRequiredService<IRepository<Customer>>();
+        }
+
+        public async Task ArrangeTableDataAsync()
+        {
+            var testHarness =
+                ServiceProvider
+                    .GetRequiredService<ITestHarness>();
+
+            await
+                testHarness
+                    .LoadTableDataAsync();
         }
     }
 }

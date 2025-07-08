@@ -10,12 +10,12 @@ namespace White.Knight.Interfaces
 	{
 		protected Expression<Func<T, object>> KeyExpression();
 
-		Task<T> SingleRecordAsync(object key, CancellationToken cancellationToken);
+		Task<T> SingleRecordAsync(object key, CancellationToken cancellationToken = default);
 
-		Task<T> SingleRecordAsync(ISingleRecordCommand<T> command, CancellationToken cancellationToken);
+		Task<T> SingleRecordAsync(ISingleRecordCommand<T> command, CancellationToken cancellationToken = default);
 
-		Task<T> AddOrUpdateAsync(IUpdateCommand<T> command, CancellationToken cancellationToken);
+		Task<T> AddOrUpdateAsync(IUpdateCommand<T> command, CancellationToken cancellationToken = default);
 
-		Task<object> DeleteRecordAsync(ISingleRecordCommand<T> command, CancellationToken cancellationToken);
+		Task<object> DeleteRecordAsync(ISingleRecordCommand<T> command, CancellationToken cancellationToken = default);
 	}
 }

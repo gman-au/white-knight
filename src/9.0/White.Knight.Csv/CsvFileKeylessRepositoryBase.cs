@@ -51,7 +51,7 @@ namespace White.Knight.Csv
                 return new RepositoryResult<TP>
                 {
                     Records = results,
-                    Count = 0
+                    Count = results.Length
                 };
             }
             catch (Exception e)

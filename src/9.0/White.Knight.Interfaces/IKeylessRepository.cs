@@ -11,6 +11,8 @@ namespace White.Knight.Interfaces
 	{
 		Expression<Func<TD, object>> DefaultOrderBy();
 
-		Task<RepositoryResult<TP>> QueryAsync<TP>(IQueryCommand<TD, TP> command, CancellationToken cancellationToken);
+		Task<RepositoryResult<TP>> QueryAsync<TP>(
+			IQueryCommand<TD, TP> command,
+			CancellationToken cancellationToken = default);
 	}
 }

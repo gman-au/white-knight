@@ -42,7 +42,7 @@ namespace White.Knight.Csv
                     (await
                         _csvLoader
                             .ReadAsync(cancellationToken))
-                    .FirstOrDefault(selector);
+                    .FirstOrDefault(selector.Compile());
 
                 return record;
             }
@@ -67,7 +67,7 @@ namespace White.Knight.Csv
                     (await
                         _csvLoader
                             .ReadAsync(cancellationToken))
-                    .FirstOrDefault(selector);
+                    .FirstOrDefault(selector.Compile());
 
                 if (csvEntity != null)
                 {

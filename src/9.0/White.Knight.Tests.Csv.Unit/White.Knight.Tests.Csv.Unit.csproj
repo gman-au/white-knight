@@ -30,4 +30,10 @@
       <ProjectReference Include="..\White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
