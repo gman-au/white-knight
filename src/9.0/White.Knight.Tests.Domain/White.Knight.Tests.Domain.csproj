@@ -4,4 +4,8 @@
         <TargetFramework>net9.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
+    </ItemGroup>
+
 </Project>

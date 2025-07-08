@@ -2,6 +2,6 @@
 {
     public interface ITestDataGenerator
     {
-        AbstractedTestData BuildRepositoryTestData();
+        AbstractedTestData GenerateRepositoryTestData();
     }
 }

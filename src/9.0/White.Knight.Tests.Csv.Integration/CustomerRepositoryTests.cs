@@ -8,7 +8,9 @@ namespace White.Knight.Tests.Csv.Integration
 {
     public class CustomerRepositoryTests() : AbstractedTestSheet(new CsvRepositoryTestContext())
     {
-        private static readonly Assembly RepositoryAssembly = Assembly.GetAssembly(typeof(AddressRepository));
+        private static readonly Assembly RepositoryAssembly =
+            Assembly
+                .GetAssembly(typeof(AddressRepository));
 
         private class CsvRepositoryTestContext : TestContextBase, ITestContext
         {

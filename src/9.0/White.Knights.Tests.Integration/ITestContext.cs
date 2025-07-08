@@ -4,10 +4,44 @@ namespace White.Knights.Tests.Integration
 {
     public interface ITestContext
     {
-        Task ArrangeTableDataAsync();
+        Task ArrangeRepositoryDataAsync();
 
-        Task ActSearchByAll();
+        Task ActSearchByAllAsync();
+        
+        Task ActSearchByValidKeyAsync();
 
-        void AssertRecordCountFour();
+        Task ActSearchByInvalidKeyAsync();
+
+        Task ActSearchWithPageSizeTwoAsync();
+
+        Task ActSearchByCustomerNumberAsync();
+
+        Task ActSearchByOrCustomerNumberAsync();
+
+        Task ActSearchByCustomerTypeAsync();
+
+        Task ActSearchByOtherGuidAsync();
+
+        Task ActSearchByNameAndNumberAsync();
+
+        Task ActSearchByFavouriteOrderIdAsync();
+
+        Task ActSearchByExampleAutoCompleteTextAsync();
+
+        Task ActSearchByNameExactAsync();
+
+        Task ActSearchByNameContainsAsync();
+
+        Task ActSearchByNameStartsWithAsync();
+
+        Task ActSearchSortByNumberDescAsync();
+
+        void AssertKeyRecordIsReturned();
+
+        void AssertInvalidKeyExceptionWasThrown(Task task);
+
+        void AssertRecordCount(int expectedCount);
+
+        void AssertOneSpecificRecordExists(int expectedNumber = 400);
     }
 }

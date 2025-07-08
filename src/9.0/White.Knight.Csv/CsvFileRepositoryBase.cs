@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using White.Knight.Abstractions.Extensions;
+using White.Knight.Abstractions.Fluent;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
 
@@ -23,10 +24,13 @@ namespace White.Knight.Csv
 
         public abstract Expression<Func<TD, object>> KeyExpression();
 
-        public Task<TD> SingleRecordAsync(object key, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual async Task<TD> SingleRecordAsync(object key, CancellationToken cancellationToken) =>
+            await
+                SingleRecordAsync(
+                    key
+                        .ToSingleRecordCommand<TD>(),
+                    cancellationToken
+                );
 
         public async Task<TD> SingleRecordAsync(ISingleRecordCommand<TD> command, CancellationToken cancellationToken)
         {
@@ -38,13 +42,13 @@ namespace White.Knight.Csv
                     key
                         .BuildKeySelectorExpression(KeyExpression());
 
-                var record =
+                var csvEntity =
                     (await
                         _csvLoader
                             .ReadAsync(cancellationToken))
                     .FirstOrDefault(selector.Compile());
 
-                return record;
+                return csvEntity;
             }
             catch (Exception e)
             {
@@ -82,9 +86,33 @@ namespace White.Knight.Csv
             return null;
         }
 
-        public Task<object> DeleteRecordAsync(ISingleRecordCommand<TD> command, CancellationToken cancellationToken)
+        public async Task<object> DeleteRecordAsync(ISingleRecordCommand<TD> command, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var key = command.Key;
+
+                var selector =
+                    key
+                        .BuildKeySelectorExpression(KeyExpression());
+
+                var csvEntity =
+                    (await
+                        _csvLoader
+                            .ReadAsync(cancellationToken))
+                    .FirstOrDefault(selector.Compile());
+
+                if (csvEntity != null)
+                {
+                    return csvEntity;
+                }
+            }
+            catch (Exception e)
+            {
+                throw RethrowRepositoryException(e);
+            }
+
+            return null;
         }
     }
 }

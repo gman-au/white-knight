@@ -17,11 +17,11 @@ namespace White.Knight.Tests.Csv.Integration
     {
         private readonly CsvRepositoryConfigurationOptions _options = optionsAccessor.Value;
 
-        public async Task LoadTableDataAsync()
+        public async Task GenerateRepositoryTestDataAsync()
         {
             var testData =
                 testDataGenerator
-                    .BuildRepositoryTestData();
+                    .GenerateRepositoryTestData();
 
             // put 'records' into tables i.e. write to CSV files in advance of the tests
             await WriteRecordsAsync(testData.Addresses);

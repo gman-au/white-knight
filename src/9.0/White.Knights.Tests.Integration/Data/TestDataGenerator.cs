@@ -23,9 +23,7 @@ namespace White.Knights.Tests.Integration.Data
 
         private readonly IFixture _fixture;
 
-        private readonly Guid _otherGuid =
-            Guid
-                .NewGuid();
+        private static Guid OtherGuid => Guid.Parse("f12ace2b2505671db811b10fb73ed714");
 
         public TestDataGenerator()
         {
@@ -43,7 +41,7 @@ namespace White.Knights.Tests.Integration.Data
                 .Add(new OmitOnRecursionBehavior());
         }
 
-        public AbstractedTestData BuildRepositoryTestData()
+        public AbstractedTestData GenerateRepositoryTestData()
         {
             var countries = GenerateCountries();
             var addresses = GenerateAddresses(countries);
@@ -286,7 +284,7 @@ namespace White.Knights.Tests.Integration.Data
                     .With
                     (
                         u => u.OtherGuid,
-                        _otherGuid
+                        OtherGuid
                     )
                     .With
                     (
@@ -326,7 +324,7 @@ namespace White.Knights.Tests.Integration.Data
                     .With
                     (
                         u => u.OtherGuid,
-                        _otherGuid
+                        OtherGuid
                     )
                     .With
                     (

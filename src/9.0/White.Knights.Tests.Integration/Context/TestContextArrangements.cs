@@ -47,7 +47,7 @@ namespace White.Knights.Tests.Integration.Context
                     .GetRequiredService<IRepository<Customer>>();
         }
 
-        public async Task ArrangeTableDataAsync()
+        public async Task ArrangeRepositoryDataAsync()
         {
             var testHarness =
                 ServiceProvider
@@ -55,7 +55,7 @@ namespace White.Knights.Tests.Integration.Context
 
             await
                 testHarness
-                    .LoadTableDataAsync();
+                    .GenerateRepositoryTestDataAsync();
         }
     }
 }

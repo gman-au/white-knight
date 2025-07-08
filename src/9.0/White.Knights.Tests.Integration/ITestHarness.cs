@@ -4,6 +4,6 @@ namespace White.Knights.Tests.Integration
 {
     public interface ITestHarness
     {
-        public Task LoadTableDataAsync();
+        public Task GenerateRepositoryTestDataAsync();
     }
 }
