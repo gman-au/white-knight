@@ -5,7 +5,7 @@ using AutoFixture;
 using AutoFixture.AutoMoq;
 using White.Knight.Tests.Domain;
 
-namespace White.Knights.Tests.Integration
+namespace White.Knights.Tests.Integration.Data
 {
     public class TestDataGenerator : ITestDataGenerator
     {

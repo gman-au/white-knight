@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Interfaces;
 using White.Knight.Tests.Domain;
+using White.Knights.Tests.Integration.Data;
 
 namespace White.Knights.Tests.Integration.Context
 {

@@ -6,6 +6,7 @@ using CsvHelper;
 using Microsoft.Extensions.Options;
 using White.Knight.Csv.Options;
 using White.Knights.Tests.Integration;
+using White.Knights.Tests.Integration.Data;
 
 namespace White.Knight.Tests.Csv.Integration
 {
