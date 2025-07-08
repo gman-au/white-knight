@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
+      <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
     </ItemGroup>
     
     <ItemGroup>

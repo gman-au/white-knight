@@ -10,6 +10,6 @@ namespace White.Knight.Tests.Csv.Unit.Repository
     public class CustomerRepository(CsvRepositoryOptions<Customer> repositoryOptions)
         : CsvFileRepositoryBase<Customer>(repositoryOptions)
     {
-        protected override Expression<Func<Customer, object>> Key() => b => b.CustomerId;
+        public override Expression<Func<Customer, object>> KeyExpression() => b => b.CustomerId;
     }
 }

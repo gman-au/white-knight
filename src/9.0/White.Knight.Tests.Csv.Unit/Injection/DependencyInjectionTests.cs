@@ -19,6 +19,19 @@ namespace White.Knight.Tests.Csv.Unit.Injection
 		{
 			_context.ArrangeServices();
 			_context.ArrangeConfiguration();
+			_context.ActAddLogging();
+			_context.ActInjectWithWrapper();
+			_context.AssertRepositoryResolved();
+			_context.AssertExceptionWrapperResolved();
+			_context.AssertForeignKeyExceptionWasRegistered();
+			_context.AssertOptionsWereRegistered();
+		}
+
+		[Fact]
+		public void Can_resolve_repository_without_logger()
+		{
+			_context.ArrangeServices();
+			_context.ArrangeConfiguration();
 			_context.ActInjectWithWrapper();
 			_context.AssertRepositoryResolved();
 			_context.AssertExceptionWrapperResolved();
@@ -40,6 +53,12 @@ namespace White.Knight.Tests.Csv.Unit.Injection
 				ServiceProvider =
 					Services
 						.BuildServiceProvider();
+			}
+
+			public void ActAddLogging()
+			{
+				Services
+					.AddLogging();
 			}
 
 			public void AssertOptionsWereRegistered()

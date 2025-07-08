@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+using White.Knight.Tests.Domain;
+
+namespace White.Knights.Tests.Integration
+{
+    public class AbstractedTestData
+    {
+        public IEnumerable<Address> Addresses { get; set; }
+
+        public IEnumerable<Customer> Customers { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
+    }
+}

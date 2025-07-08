@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
+        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj"/>
+        <ProjectReference Include="..\White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoFixture" Version="4.18.1" />
+        <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6"/>
+    </ItemGroup>
+
+</Project>

@@ -6,9 +6,9 @@ namespace White.Knight.Abstractions.Extensions
 {
     public static class KeyEx
     {
-        private static Expression<Func<TD, bool>> BuildKeySelectorExpression<TD>(
-            this Expression<Func<TD, object>> keyExpression,
-            object key)
+        public static Expression<Func<TD, bool>> BuildKeySelectorExpression<TD>(
+            this object key,
+            Expression<Func<TD, object>> keyExpression)
         {
             var param =
                 Expression

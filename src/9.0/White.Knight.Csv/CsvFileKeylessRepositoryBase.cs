@@ -28,7 +28,7 @@ namespace White.Knight.Csv
                 var queryable =
                     await
                         _csvLoader
-                            .LoadAsync(cancellationToken);
+                            .ReadAsync(cancellationToken);
 
                 var spec =
                     command
@@ -60,7 +60,7 @@ namespace White.Knight.Csv
             }
         }
 
-        private Exception RethrowRepositoryException(Exception exception)
+        protected Exception RethrowRepositoryException(Exception exception)
         {
             return _repositoryExceptionWrapper != null
                 ? _repositoryExceptionWrapper.Rethrow(exception)
