@@ -12,9 +12,10 @@ namespace White.Knights.Tests.Integration.Context
 {
     public partial class TestContextBase
     {
+        private AbstractedTestData _abstractedTestData = null;
+        private IServiceProvider _serviceProvider;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
-        protected IServiceProvider ServiceProvider;
 
         protected void LoadTestConfiguration<T>() where T : class, ITestHarness
         {
@@ -38,24 +39,25 @@ namespace White.Knights.Tests.Integration.Context
 
         protected void LoadServiceProvider()
         {
-            ServiceProvider =
+            _serviceProvider =
                 ServiceCollection
                     .BuildServiceProvider();
 
             _sut =
-                ServiceProvider
+                _serviceProvider
                     .GetRequiredService<IRepository<Customer>>();
         }
 
         public async Task ArrangeRepositoryDataAsync()
         {
             var testHarness =
-                ServiceProvider
+                _serviceProvider
                     .GetRequiredService<ITestHarness>();
 
-            await
-                testHarness
-                    .GenerateRepositoryTestDataAsync();
+            _abstractedTestData =
+                await
+                    testHarness
+                        .GenerateRepositoryTestDataAsync();
         }
     }
 }

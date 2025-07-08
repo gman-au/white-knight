@@ -229,5 +229,65 @@ namespace White.Knights.Tests.Integration
             context
                 .AssertOneSpecificRecordExists();
         }
+
+        [Fact]
+        public async Task Test_Update_As_Supplied()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActUpdateAsSuppliedAsync();
+
+            context
+                .AssertNoPropertiesPreserved();
+        }
+
+        [Fact]
+        public async Task Test_Update_Excluding_Fields()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActUpdateWithExcludingAsync();
+
+            context
+                .AssertUpdatesWereExcluded();
+        }
+
+        [Fact]
+        public async Task Test_Update_Including_Fields()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActUpdateWithIncludingAsync();
+
+            context
+                .AssertUpdatesWereIncluded();
+        }
+
+        [Fact]
+        public async Task Test_Add()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActAddAsync();
+
+            context
+                .AssertResultIsNotNull();
+        }
     }
 }

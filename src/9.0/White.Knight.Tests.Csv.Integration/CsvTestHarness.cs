@@ -17,7 +17,7 @@ namespace White.Knight.Tests.Csv.Integration
     {
         private readonly CsvRepositoryConfigurationOptions _options = optionsAccessor.Value;
 
-        public async Task GenerateRepositoryTestDataAsync()
+        public async Task<AbstractedTestData> GenerateRepositoryTestDataAsync()
         {
             var testData =
                 testDataGenerator
@@ -27,6 +27,8 @@ namespace White.Knight.Tests.Csv.Integration
             await WriteRecordsAsync(testData.Addresses);
             await WriteRecordsAsync(testData.Customers);
             await WriteRecordsAsync(testData.Orders);
+
+            return testData;
         }
 
         private async Task WriteRecordsAsync<T>(IEnumerable<T> records)

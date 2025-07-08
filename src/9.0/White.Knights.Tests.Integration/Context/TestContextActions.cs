@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using White.Knight.Abstractions.Extensions;
 using White.Knight.Abstractions.Fluent;
@@ -233,6 +234,91 @@ namespace White.Knights.Tests.Integration.Context
                                     o => o.CustomerNumber,
                                     true
                                 )
+                        );
+        }
+
+        public async Task ActUpdateAsSuppliedAsync()
+        {
+            var customer =
+                _abstractedTestData
+                    .Customers
+                    .ElementAt(0);
+
+            customer.CustomerName = "Jeff";
+            customer.CustomerNumber = 200;
+
+            _result =
+                await
+                    _sut
+                        .AddOrUpdateAsync
+                        (
+                            customer
+                                .ToUpdateCommand()
+                        );
+        }
+
+        public async Task ActUpdateWithExcludingAsync()
+        {
+            var customer =
+                _abstractedTestData
+                    .Customers
+                    .ElementAt(0);
+
+            customer.CustomerName = "Jeff";
+            customer.CustomerNumber = 200;
+
+            _result =
+                await
+                    _sut
+                        .AddOrUpdateAsync
+                        (
+                            customer
+                                .ToUpdateCommand()
+                                .WithoutUpdating
+                                    (o => o.CustomerName)
+                        );
+        }
+
+        public async Task ActUpdateWithIncludingAsync()
+        {
+            var customer =
+                _abstractedTestData
+                    .Customers
+                    .ElementAt(0);
+
+            customer.CustomerName = "Jeff";
+            customer.CustomerNumber = 200;
+
+            _result =
+                await
+                    _sut
+                        .AddOrUpdateAsync
+                        (
+                            customer
+                                .ToUpdateCommand()
+                                .OnlyUpdating
+                                    (o => o.CustomerName)
+                        );
+        }
+
+        public async Task ActAddAsync()
+        {
+            var newCustomer =
+                _abstractedTestData
+                    .Customers
+                    .ElementAt(0);
+
+            newCustomer.CustomerId =
+                Guid
+                    .Empty;
+
+            _result =
+                await
+                    _sut
+                        .AddOrUpdateAsync
+                        (
+                            newCustomer
+                                .ToUpdateCommand()
                         );
         }
     }

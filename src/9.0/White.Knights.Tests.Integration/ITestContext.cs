@@ -36,6 +36,14 @@ namespace White.Knights.Tests.Integration
 
         Task ActSearchSortByNumberDescAsync();
 
+        Task ActUpdateAsSuppliedAsync();
+
+        Task ActUpdateWithExcludingAsync();
+
+        Task ActUpdateWithIncludingAsync();
+
+        Task ActAddAsync();
+
         void AssertKeyRecordIsReturned();
 
         void AssertInvalidKeyExceptionWasThrown(Task task);
@@ -43,5 +51,13 @@ namespace White.Knights.Tests.Integration
         void AssertRecordCount(int expectedCount);
 
         void AssertOneSpecificRecordExists(int expectedNumber = 400);
+
+        void AssertNoPropertiesPreserved();
+
+        void AssertUpdatesWereExcluded();
+
+        void AssertUpdatesWereIncluded();
+
+        void AssertResultIsNotNull();
     }
 }

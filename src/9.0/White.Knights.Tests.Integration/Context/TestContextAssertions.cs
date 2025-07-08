@@ -9,6 +9,7 @@ namespace White.Knights.Tests.Integration.Context
 {
     public partial class TestContextBase
     {
+        private Customer _result;
         private RepositoryResult<Customer> _results;
 
         public void AssertKeyRecordIsReturned()
@@ -75,6 +76,61 @@ namespace White.Knights.Tests.Integration.Context
                         (0)
                     .CustomerNumber
             );
+        }
+
+        public void AssertNoPropertiesPreserved()
+        {
+            Assert.NotNull
+                (_result);
+            Assert.Equal
+            (
+                200,
+                _result.CustomerNumber
+            );
+            Assert.Equal
+            (
+                "Jeff",
+                _result.CustomerName
+            );
+        }
+
+        public void AssertUpdatesWereExcluded()
+        {
+            Assert.NotNull
+                (_result);
+            Assert.Equal
+            (
+                200,
+                _result.CustomerNumber
+            );
+            Assert.Equal
+            (
+                "Arthur",
+                _result.CustomerName
+            );
+        }
+
+        public void AssertUpdatesWereIncluded()
+        {
+            Assert.NotNull
+                (_result);
+            Assert.Equal
+            (
+                100,
+                _result.CustomerNumber
+            );
+            Assert.Equal
+            (
+                "Jeff",
+                _result.CustomerName
+            );
+        }
+
+        public void AssertResultIsNotNull()
+        {
+            Assert
+                .NotNull
+                    (_result);
         }
     }
 }
