@@ -6,7 +6,7 @@ namespace White.Knights.Tests.Integration
     public abstract class AbstractedTestSheet(ITestContext context)
     {
         [Fact]
-        public async Task Test_Retrieve_Single_Record()
+        public virtual async Task Test_Retrieve_Single_Record()
         {
             await
                 context
@@ -21,7 +21,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Invalid_Key_Search()
+        public virtual async Task Test_Invalid_Key_Search()
         {
             await
                 context
@@ -36,7 +36,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_All_Users()
+        public virtual async Task Test_Search_All_Users()
         {
             await
                 context
@@ -51,7 +51,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_Split_Page()
+        public virtual async Task Test_Search_Split_Page()
         {
             await
                 context
@@ -66,7 +66,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_By_Number()
+        public virtual async Task Test_Search_By_Number()
         {
             await
                 context
@@ -81,7 +81,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_With_Or()
+        public virtual async Task Test_Search_With_Or()
         {
             await
                 context
@@ -96,7 +96,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_By_Enum()
+        public virtual async Task Test_Search_By_Enum()
         {
             await
                 context
@@ -111,7 +111,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_By_Guid()
+        public virtual async Task Test_Search_By_Guid()
         {
             await
                 context
@@ -126,7 +126,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_With_And()
+        public virtual async Task Test_Search_With_And()
         {
             await
                 context
@@ -141,7 +141,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_By_Sub_Item_Query_Id()
+        public virtual async Task Test_Search_By_Sub_Item_Query_Id()
         {
             await
                 context
@@ -156,7 +156,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Search_By_Example_AutoComplete_Text()
+        public virtual async Task Test_Search_By_Example_AutoComplete_Text()
         {
             await
                 context
@@ -171,7 +171,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Name_Exact()
+        public virtual async Task Test_Name_Exact()
         {
             await
                 context
@@ -186,7 +186,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Name_Contains()
+        public virtual async Task Test_Name_Contains()
         {
             await
                 context
@@ -201,7 +201,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Name_Starts_With()
+        public virtual async Task Test_Name_Starts_With()
         {
             await
                 context
@@ -216,7 +216,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Sort_By_Number()
+        public virtual async Task Test_Sort_By_Number()
         {
             await
                 context
@@ -231,7 +231,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Update_As_Supplied()
+        public virtual async Task Test_Update_As_Supplied()
         {
             await
                 context
@@ -246,7 +246,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Update_Excluding_Fields()
+        public virtual async Task Test_Update_Excluding_Fields()
         {
             await
                 context
@@ -261,7 +261,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Update_Including_Fields()
+        public virtual async Task Test_Update_Including_Fields()
         {
             await
                 context
@@ -276,7 +276,7 @@ namespace White.Knights.Tests.Integration
         }
 
         [Fact]
-        public async Task Test_Add()
+        public virtual async Task Test_Add()
         {
             await
                 context
@@ -288,6 +288,21 @@ namespace White.Knights.Tests.Integration
 
             context
                 .AssertResultIsNotNull();
+        }
+
+        [Fact]
+        public async Task Test_Delete()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActDeleteCustomerAsync();
+
+            context
+                .AssertDeletedRecordNotPresent();
         }
     }
 }

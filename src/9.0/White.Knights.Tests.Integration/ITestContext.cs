@@ -44,6 +44,8 @@ namespace White.Knights.Tests.Integration
 
         Task ActAddAsync();
 
+        Task ActDeleteCustomerAsync();
+
         void AssertKeyRecordIsReturned();
 
         void AssertInvalidKeyExceptionWasThrown(Task task);
@@ -61,5 +63,7 @@ namespace White.Knights.Tests.Integration
         void AssertResultIsNotNull();
 
         void AssertFirstRecordIs400();
+        
+        void AssertDeletedRecordNotPresent();
     }
 }

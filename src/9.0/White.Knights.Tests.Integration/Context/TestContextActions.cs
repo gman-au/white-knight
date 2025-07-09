@@ -321,5 +321,34 @@ namespace White.Knights.Tests.Integration.Context
                                 .ToUpdateCommand()
                         );
         }
+
+        public async Task ActDeleteCustomerAsync()
+        {
+            _result =
+                _abstractedTestData
+                    .Customers
+                    .ElementAt(2);
+
+            var customerIdToDelete =
+                _result
+                    .CustomerId;
+
+            await
+                _sut
+                    .DeleteRecordAsync
+                    (
+                        customerIdToDelete
+                            .ToSingleRecordCommand<Customer>()
+                    );
+
+            _results =
+                await
+                    _sut
+                        .QueryAsync
+                        (
+                            new SpecificationByAll<Customer>()
+                                .ToQueryCommand()
+                        );
+        }
     }
 }

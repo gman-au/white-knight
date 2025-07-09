@@ -147,5 +147,21 @@ namespace White.Knights.Tests.Integration.Context
                 .NotNull
                     (_result);
         }
+
+        public void AssertDeletedRecordNotPresent()
+        {
+            Assert.NotEmpty
+                (_results?.Records ?? []);
+            Assert.Equal
+            (
+                3,
+                _results?.Count
+            );
+            Assert.DoesNotContain
+            (
+                _results.Records,
+                r => r.CustomerId == _result.CustomerId
+            );
+        }
     }
 }
