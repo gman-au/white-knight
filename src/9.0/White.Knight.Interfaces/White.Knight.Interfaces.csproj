@@ -10,6 +10,17 @@
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Company>G-MAN Solutions</Company>
+        <Authors>Gabriel Palma</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>White.Knight.Interfaces</PackageId>
+        <Description>White Knight</Description>
+        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\White.Knight.Definition\White.Knight.Definition.csproj" />
     </ItemGroup>

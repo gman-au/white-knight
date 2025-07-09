@@ -11,6 +11,17 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Company>G-MAN Solutions</Company>
+        <Authors>Gabriel Palma</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>White.Knight.Abstractions</PackageId>
+        <Description>White Knight</Description>
+        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
     </ItemGroup>
