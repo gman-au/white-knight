@@ -3,19 +3,21 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using White.Knight.Abstractions.Extensions;
 using White.Knight.Abstractions.Fluent;
+using White.Knight.Csv.Options;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
 
 namespace White.Knight.Csv
 {
     public abstract class CsvFileRepositoryBase<TD>(
-        CsvRepositoryOptions<TD> repositoryOptions)
-        : CsvFileKeylessRepositoryBase<TD>(repositoryOptions), IRepository<TD>
+        CsvRepositoryFeatures<TD> repositoryFeatures)
+        : CsvFileKeylessRepositoryBase<TD>(repositoryFeatures), IRepository<TD>
         where TD : new()
     {
-        private readonly ICsvLoader<TD> _csvLoader = repositoryOptions.CsvLoader;
+        private readonly ICsvLoader<TD> _csvLoader = repositoryFeatures.CsvLoader;
 
         public override Expression<Func<TD, object>> DefaultOrderBy()
         {
@@ -36,9 +38,15 @@ namespace White.Knight.Csv
 
         public async Task<TD> SingleRecordAsync(ISingleRecordCommand<TD> command, CancellationToken cancellationToken)
         {
+            var key = command.Key;
+
             try
             {
-                var key = command.Key;
+                Logger
+                    .LogDebug("Retrieving single record with key [{key}]", key);
+
+                Stopwatch
+                    .Restart();
 
                 var selector =
                     key
@@ -50,11 +58,23 @@ namespace White.Knight.Csv
                             .ReadAsync(cancellationToken))
                     .FirstOrDefault(selector.Compile());
 
+                Logger
+                    .LogDebug("Retrieved single record with key [{key}] in {ms} ms", key,
+                        Stopwatch.ElapsedMilliseconds);
+
                 return csvEntity;
             }
             catch (Exception e)
             {
+                Logger
+                    .LogError("Retrieving single record with key [{key}]: {error}", key, e.Message);
+
                 throw RethrowRepositoryException(e);
+            }
+            finally
+            {
+                Stopwatch
+                    .Stop();
             }
         }
 
@@ -73,9 +93,15 @@ namespace White.Knight.Csv
         public async Task<object> DeleteRecordAsync(ISingleRecordCommand<TD> command,
             CancellationToken cancellationToken)
         {
+            var key = command.Key;
+
             try
             {
-                var key = command.Key;
+                Logger
+                    .LogDebug("Deleting record with key [{key}]", key);
+
+                Stopwatch
+                    .Restart();
 
                 var selector =
                     key
@@ -92,11 +118,22 @@ namespace White.Knight.Csv
                     _csvLoader
                         .WriteAsync(allCsvEntities, cancellationToken);
 
+                Logger
+                    .LogDebug("Deleted record with key [{key}] in {ms} ms", key, Stopwatch.ElapsedMilliseconds);
+
                 return key;
             }
             catch (Exception e)
             {
+                Logger
+                    .LogError("Error deleting record key [{key}]: {error}", key, e.Message);
+
                 throw RethrowRepositoryException(e);
+            }
+            finally
+            {
+                Stopwatch
+                    .Stop();
             }
         }
 
@@ -111,6 +148,12 @@ namespace White.Knight.Csv
 
             try
             {
+                Logger
+                    .LogDebug("Upserting record of type [{type}]", typeof(TD).Name);
+
+                Stopwatch
+                    .Restart();
+
                 var selector =
                     sourceEntity
                         .BuildEntitySelectorExpression(KeyExpression());
@@ -144,10 +187,22 @@ namespace White.Knight.Csv
                 await
                     _csvLoader
                         .WriteAsync(filteredCsvEntities, cancellationToken);
+
+                Logger
+                    .LogDebug("Upserted record of type [{type}] in {ms} ms", typeof(TD).Name,
+                        Stopwatch.ElapsedMilliseconds);
             }
             catch (Exception e)
             {
+                Logger
+                    .LogError("Error upserting record of type [{type}]: {error}", typeof(TD).Name, e.Message);
+
                 throw RethrowRepositoryException(e);
+            }
+            finally
+            {
+                Stopwatch
+                    .Stop();
             }
 
             return entityToCommit;

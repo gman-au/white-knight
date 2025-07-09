@@ -2,18 +2,18 @@
 using Microsoft.Extensions.Logging.Abstractions;
 using White.Knight.Interfaces;
 
-namespace White.Knight.Csv
+namespace White.Knight.Csv.Options
 {
-    public class CsvRepositoryOptions<T>(
+    public class CsvRepositoryFeatures<T>(
         ICsvLoader<T> csvLoader,
-        IRepositoryExceptionWrapper exceptionWrapper,
-        ILogger<CsvRepositoryOptions<T>> logger = null)
+        IRepositoryExceptionWrapper exceptionWrapper = null,
+        ILoggerFactory loggerFactory = null)
         : IRepositoryOptions<T>
     {
         public ICsvLoader<T> CsvLoader { get; set; } = csvLoader;
 
         public IRepositoryExceptionWrapper ExceptionWrapper { get; set; } = exceptionWrapper;
 
-        public ILogger<CsvRepositoryOptions<T>> Logger { get; set; } = logger ?? NullLogger<CsvRepositoryOptions<T>>.Instance;
+        public ILoggerFactory LoggerFactory { get; set; } = loggerFactory ?? new NullLoggerFactory();
     }
 }

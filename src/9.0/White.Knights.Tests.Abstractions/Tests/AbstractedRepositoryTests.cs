@@ -304,5 +304,20 @@ namespace White.Knights.Tests.Abstractions.Tests
             context
                 .AssertDeletedRecordNotPresent();
         }
+
+        [Fact]
+        public async Task Test_Search_With_Non_Nested_Projection()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActSearchWithNonNestedProjection();
+
+            context
+                .AssertRecordsAreProjectedWithoutNesting();
+        }
     }
 }

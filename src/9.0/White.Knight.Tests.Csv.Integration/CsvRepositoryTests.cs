@@ -2,12 +2,15 @@
 using White.Knight.Csv.Injection;
 using White.Knight.Tests.Csv.Unit.Repository;
 using White.Knights.Tests.Abstractions;
-using White.Knights.Tests.Abstractions.Context;
+using White.Knights.Tests.Abstractions.Extensions;
+using White.Knights.Tests.Abstractions.Repository;
 using White.Knights.Tests.Abstractions.Tests;
+using Xunit.Abstractions;
 
 namespace White.Knight.Tests.Csv.Integration
 {
-    public class CustomerRepositoryTests() : AbstractedRepositoryTests(new CsvRepositoryTestContext())
+    public class CsvRepositoryTests(ITestOutputHelper helper)
+        : AbstractedRepositoryTests(new CsvRepositoryTestContext(helper))
     {
         private static readonly Assembly RepositoryAssembly =
             Assembly
@@ -15,7 +18,7 @@ namespace White.Knight.Tests.Csv.Integration
 
         private class CsvRepositoryTestContext : RepositoryTestContextBase, IRepositoryTestContext
         {
-            public CsvRepositoryTestContext()
+            public CsvRepositoryTestContext(ITestOutputHelper testOutputHelper)
             {
                 // specify csv harness
                 LoadTestConfiguration<CsvTestHarness>();
@@ -24,6 +27,10 @@ namespace White.Knight.Tests.Csv.Integration
                 ServiceCollection
                     .AddCsvRepositories(Configuration)
                     .AddAttributedCsvRepositories(RepositoryAssembly);
+
+                // redirect ILogger output to Xunit console
+                ServiceCollection
+                    .ArrangeXunitOutputLogging(testOutputHelper);
 
                 ServiceCollection
                     .AddCsvRepositoryOptions();

@@ -6,6 +6,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
+        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" />
         <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj"/>
         <ProjectReference Include="..\White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj" />
     </ItemGroup>
@@ -18,8 +19,10 @@
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
         <PackageReference Include="xunit.assert" Version="2.5.3" />
         <PackageReference Include="xunit.extensibility.core" Version="2.5.3" />
+        <PackageReference Include="Xunit.Extensions.Logging" Version="1.1.0" />
     </ItemGroup>
 
 </Project>

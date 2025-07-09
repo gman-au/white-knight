@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
-using White.Knight.Csv;
 using White.Knight.Csv.Injection;
+using White.Knight.Csv.Options;
 using White.Knight.Interfaces;
 using White.Knight.Tests.Csv.Unit.Repository;
 using White.Knight.Tests.Domain;
@@ -65,7 +65,7 @@ namespace White.Knight.Tests.Csv.Unit.Injection
 			{
 				var options =
 					ServiceProvider
-						.GetRequiredService<CsvRepositoryOptions<Address>>();
+						.GetRequiredService<CsvRepositoryFeatures<Address>>();
 
 				Assert.NotNull(options.ExceptionWrapper);
 			}

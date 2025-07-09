@@ -5,12 +5,13 @@ using White.Knight.Definition;
 using White.Knight.Tests.Domain;
 using Xunit;
 
-namespace White.Knights.Tests.Abstractions.Context
+namespace White.Knights.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
         private Customer _result;
         private RepositoryResult<Customer> _results;
+        private RepositoryResult<ProjectedCustomer> _projectedResults;
 
         public void AssertKeyRecordIsReturned()
         {
@@ -162,6 +163,23 @@ namespace White.Knights.Tests.Abstractions.Context
                 _results.Records,
                 r => r.CustomerId == _result.CustomerId
             );
+        }
+
+        public void AssertRecordsAreProjectedWithoutNesting()
+        {
+            Assert.NotEmpty(_projectedResults?.Records ?? []);
+            Assert.Equal
+            (
+                3,
+                _projectedResults?.Count
+            );
+
+            var customer =
+                _projectedResults
+                    .Records
+                    .ElementAt(0);
+
+            Assert.Null(customer.Orders);
         }
     }
 }

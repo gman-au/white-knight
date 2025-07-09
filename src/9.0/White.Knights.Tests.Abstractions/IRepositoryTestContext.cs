@@ -46,6 +46,8 @@ namespace White.Knights.Tests.Abstractions
 
         Task ActDeleteCustomerAsync();
 
+        Task ActSearchWithNonNestedProjection();
+
         void AssertKeyRecordIsReturned();
 
         void AssertInvalidKeyExceptionWasThrown(Task task);
@@ -65,5 +67,7 @@ namespace White.Knights.Tests.Abstractions
         void AssertFirstRecordIs400();
 
         void AssertDeletedRecordNotPresent();
+
+        void AssertRecordsAreProjectedWithoutNesting();
     }
 }

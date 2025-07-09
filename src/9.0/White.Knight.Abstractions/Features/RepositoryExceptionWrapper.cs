@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using White.Knight.Interfaces;
 
-namespace White.Knight.Abstractions
+namespace White.Knight.Abstractions.Features
 {
 	public class RepositoryExceptionWrapper(IEnumerable<IRepositoryException> repositoryExceptions)
 		: IRepositoryExceptionWrapper

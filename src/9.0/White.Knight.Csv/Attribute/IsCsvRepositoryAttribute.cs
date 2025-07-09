@@ -1,6 +1,8 @@
-﻿namespace White.Knight.Csv.Attribute
+﻿using System;
+
+namespace White.Knight.Csv.Attribute
 {
-    [System.AttributeUsage(System.AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class IsCsvRepositoryAttribute : System.Attribute
     {
     }

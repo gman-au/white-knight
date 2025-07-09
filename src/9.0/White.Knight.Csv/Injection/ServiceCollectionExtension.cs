@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using White.Knight.Abstractions;
 using White.Knight.Csv.Attribute;
 using White.Knight.Csv.Options;
 using White.Knight.Injection.Abstractions;
@@ -48,21 +47,10 @@ namespace White.Knight.Csv.Injection
 		public static IServiceCollection AddCsvRepositoryOptions(this IServiceCollection services)
 		{
 			services
-				.AddRepositoryExceptionWrapper();
-
-			services
-				.AddScoped(typeof(CsvRepositoryOptions<>), typeof(CsvRepositoryOptions<>))
+				.AddScoped(typeof(CsvRepositoryFeatures<>), typeof(CsvRepositoryFeatures<>))
 				.AddScoped(typeof(ICsvLoader<>), typeof(CsvLoader<>));
 
 			return services;
 		}
-        
-        private static IServiceCollection AddRepositoryExceptionWrapper(this IServiceCollection services)
-        {
-            services
-                .AddTransient<IRepositoryExceptionWrapper, RepositoryExceptionWrapper>();
-
-            return services;
-        }
 	}
 }

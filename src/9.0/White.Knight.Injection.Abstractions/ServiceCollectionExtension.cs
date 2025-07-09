@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using White.Knight.Abstractions.Features;
+using White.Knight.Interfaces;
 
 namespace White.Knight.Injection.Abstractions
 {
@@ -11,7 +13,7 @@ namespace White.Knight.Injection.Abstractions
             this IServiceCollection services,
             Assembly assembly,
             Type interfaceType
-        ) where TA : System.Attribute
+        ) where TA : Attribute
         {
             var attributedClasses =
                 assembly
@@ -35,6 +37,14 @@ namespace White.Knight.Injection.Abstractions
                         attributedClass
                     );
             }
+
+            return services;
+        }
+
+        public static IServiceCollection AddRepositoryExceptionWrapper(this IServiceCollection services)
+        {
+            services
+                .AddTransient<IRepositoryExceptionWrapper, RepositoryExceptionWrapper>();
 
             return services;
         }

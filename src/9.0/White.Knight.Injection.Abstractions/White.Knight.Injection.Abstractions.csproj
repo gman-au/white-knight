@@ -8,4 +8,9 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
+      <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -9,13 +9,13 @@ using White.Knight.Tests.Domain;
 using White.Knight.Tests.Domain.Specifications;
 using White.Knights.Tests.Abstractions.Extensions;
 
-namespace White.Knights.Tests.Abstractions.Context
+namespace White.Knights.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
         private IRepository<Customer> _sut;
 
-        public async Task ActSearchByAllAsync()
+        public virtual async Task ActSearchByAllAsync()
         {
             _results =
                 await
@@ -27,7 +27,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByValidKeyAsync()
+        public virtual async Task ActSearchByValidKeyAsync()
         {
             var result =
                 await
@@ -45,7 +45,7 @@ namespace White.Knights.Tests.Abstractions.Context
                     .ToMockResults(result);
         }
 
-        public async Task ActSearchByInvalidKeyAsync()
+        public virtual async Task ActSearchByInvalidKeyAsync()
         {
             var result =
                 await
@@ -58,7 +58,7 @@ namespace White.Knights.Tests.Abstractions.Context
                     .ToMockResults(result);
         }
 
-        public async Task ActSearchWithPageSizeTwoAsync()
+        public virtual async Task ActSearchWithPageSizeTwoAsync()
         {
             _results =
                 await
@@ -75,7 +75,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByCustomerNumberAsync()
+        public virtual async Task ActSearchByCustomerNumberAsync()
         {
             _results =
                 await
@@ -88,7 +88,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByOrCustomerNumberAsync()
+        public virtual async Task ActSearchByOrCustomerNumberAsync()
         {
             _results =
                 await
@@ -111,7 +111,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByCustomerTypeAsync()
+        public virtual async Task ActSearchByCustomerTypeAsync()
         {
             _results =
                 await
@@ -123,7 +123,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByOtherGuidAsync()
+        public virtual async Task ActSearchByOtherGuidAsync()
         {
             _results =
                 await
@@ -135,7 +135,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByNameAndNumberAsync()
+        public virtual async Task ActSearchByNameAndNumberAsync()
         {
             _results =
                 await
@@ -153,7 +153,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByFavouriteOrderIdAsync()
+        public virtual async Task ActSearchByFavouriteOrderIdAsync()
         {
             _results =
                 await
@@ -166,7 +166,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByExampleAutoCompleteTextAsync()
+        public virtual async Task ActSearchByExampleAutoCompleteTextAsync()
         {
             _results =
                 await
@@ -182,7 +182,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByNameExactAsync()
+        public virtual async Task ActSearchByNameExactAsync()
         {
             _results =
                 await
@@ -195,7 +195,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByNameContainsAsync()
+        public virtual async Task ActSearchByNameContainsAsync()
         {
             _results =
                 await
@@ -208,7 +208,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchByNameStartsWithAsync()
+        public virtual async Task ActSearchByNameStartsWithAsync()
         {
             _results =
                 await
@@ -221,7 +221,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActSearchSortByNumberDescAsync()
+        public virtual async Task ActSearchSortByNumberDescAsync()
         {
             _results =
                 await
@@ -237,7 +237,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActUpdateAsSuppliedAsync()
+        public virtual async Task ActUpdateAsSuppliedAsync()
         {
             var customer =
                 _abstractedRepositoryTestData
@@ -257,7 +257,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActUpdateWithExcludingAsync()
+        public virtual async Task ActUpdateWithExcludingAsync()
         {
             var customer =
                 _abstractedRepositoryTestData
@@ -279,7 +279,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActUpdateWithIncludingAsync()
+        public virtual async Task ActUpdateWithIncludingAsync()
         {
             var customer =
                 _abstractedRepositoryTestData
@@ -301,7 +301,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActAddAsync()
+        public virtual async Task ActAddAsync()
         {
             var newCustomer =
                 _abstractedRepositoryTestData
@@ -322,7 +322,7 @@ namespace White.Knights.Tests.Abstractions.Context
                         );
         }
 
-        public async Task ActDeleteCustomerAsync()
+        public virtual async Task ActDeleteCustomerAsync()
         {
             _result =
                 _abstractedRepositoryTestData
@@ -349,6 +349,28 @@ namespace White.Knights.Tests.Abstractions.Context
                             new SpecificationByAll<Customer>()
                                 .ToQueryCommand()
                         );
+        }
+
+        public virtual async Task ActSearchWithNonNestedProjection()
+        {
+            var command =
+                new CustomerSpecByType
+                        ((int)CustomerTypeEnum.New)
+                    .ToQueryCommand()
+                    .WithProjection
+                    (
+                        o => new ProjectedCustomer
+                        {
+                            CustomerId = o.CustomerId,
+                            CustomerName = o.CustomerName
+                        }
+                    );
+
+            _projectedResults =
+                await
+                    _sut
+                        .QueryAsync
+                            (command);
         }
     }
 }

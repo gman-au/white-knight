@@ -1,20 +1,25 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using White.Knight.Abstractions.Extensions;
+using White.Knight.Csv.Options;
 using White.Knight.Definition;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
-using White.Knight.Abstractions.Extensions;
 
 namespace White.Knight.Csv
 {
     public abstract class CsvFileKeylessRepositoryBase<TD>(
-        CsvRepositoryOptions<TD> repositoryOptions) : IKeylessRepository<TD>
+        CsvRepositoryFeatures<TD> repositoryFeatures) : IKeylessRepository<TD>
         where TD : new()
     {
-        private readonly ICsvLoader<TD> _csvLoader = repositoryOptions.CsvLoader;
-        private readonly IRepositoryExceptionWrapper _repositoryExceptionWrapper = repositoryOptions.ExceptionWrapper;
+        private readonly ICsvLoader<TD> _csvLoader = repositoryFeatures.CsvLoader;
+        private readonly IRepositoryExceptionWrapper _repositoryExceptionWrapper = repositoryFeatures.ExceptionWrapper;
+        protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<CsvFileKeylessRepositoryBase<TD>>();
+        protected readonly Stopwatch Stopwatch = new();
 
         public abstract Expression<Func<TD, object>> DefaultOrderBy();
 
@@ -24,6 +29,12 @@ namespace White.Knight.Csv
         {
             try
             {
+                Logger
+                    .LogDebug("Querying records of type [{type}]", typeof(TD).Name);
+
+                Stopwatch
+                    .Restart();
+
                 var queryable =
                     await
                         _csvLoader
@@ -34,29 +45,22 @@ namespace White.Knight.Csv
                         queryable
                             .PerformCommandQueryAsync(command);
 
-                /*var spec =
-                    command
-                        .Specification;
-
-                var projectionFunc =
-                    (command
-                         .ProjectionOptions?
-                         .Projection ??
-                     throw new UndefinedProjectionException()
-                    )
-                    .Compile();
-
-                var results =
-                    queryable
-                        .Where(o => spec.IsSatisfiedBy(o))
-                        .Select(o => projectionFunc.Invoke(o))
-                        .ToArray();*/
+                Logger
+                    .LogDebug("Queried records of type [{type}] in {ms} ms", typeof(TD).Name, Stopwatch.ElapsedMilliseconds);
 
                 return results;
             }
             catch (Exception e)
             {
+                Logger
+                    .LogError("Error querying records of type [{type}]: {error}", typeof(TD).Name, e.Message);
+
                 throw RethrowRepositoryException(e);
+            }
+            finally
+            {
+                Stopwatch
+                    .Stop();
             }
         }
 

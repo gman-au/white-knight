@@ -8,14 +8,26 @@ using White.Knight.Interfaces;
 using White.Knight.Tests.Domain;
 using White.Knights.Tests.Abstractions.Data;
 
-namespace White.Knights.Tests.Abstractions.Context
+namespace White.Knights.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
-        private AbstractedRepositoryTestData _abstractedRepositoryTestData = null;
+        private AbstractedRepositoryTestData _abstractedRepositoryTestData;
         private IServiceProvider _serviceProvider;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
+
+        public async Task ArrangeRepositoryDataAsync()
+        {
+            var testHarness =
+                _serviceProvider
+                    .GetRequiredService<ITestHarness>();
+
+            _abstractedRepositoryTestData =
+                await
+                    testHarness
+                        .GenerateRepositoryTestDataAsync();
+        }
 
         protected void LoadTestConfiguration<T>() where T : class, ITestHarness
         {
@@ -46,18 +58,6 @@ namespace White.Knights.Tests.Abstractions.Context
             _sut =
                 _serviceProvider
                     .GetRequiredService<IRepository<Customer>>();
-        }
-
-        public async Task ArrangeRepositoryDataAsync()
-        {
-            var testHarness =
-                _serviceProvider
-                    .GetRequiredService<ITestHarness>();
-
-            _abstractedRepositoryTestData =
-                await
-                    testHarness
-                        .GenerateRepositoryTestDataAsync();
         }
     }
 }
