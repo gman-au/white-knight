@@ -23,8 +23,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
+      <ProjectReference Include="..\White.Knight.Csv\White.Knight.Csv.csproj" />
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
-      <ProjectReference Include="..\White.Knight.Tests.Csv.Unit\White.Knight.Tests.Csv.Unit.csproj" />
       <ProjectReference Include="..\White.Knights.Tests.Abstractions\White.Knights.Tests.Abstractions.csproj" />
     </ItemGroup>
 

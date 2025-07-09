@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Csv.Injection;
 using White.Knight.Csv.Options;
-using White.Knight.Tests.Csv.Unit.Repository;
+using White.Knight.Tests.Csv.Integration.Repositories;
 using White.Knight.Tests.Domain;
 using White.Knights.Tests.Abstractions;
 using White.Knights.Tests.Abstractions.Injection;

@@ -5,7 +5,7 @@ using White.Knight.Csv.Attribute;
 using White.Knight.Csv.Options;
 using White.Knight.Tests.Domain;
 
-namespace White.Knight.Tests.Csv.Unit.Repository
+namespace White.Knight.Tests.Csv.Integration.Repositories
 {
     [IsCsvRepository]
     public class AddressRepository(CsvRepositoryFeatures<Address> repositoryFeatures)

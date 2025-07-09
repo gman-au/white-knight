@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using White.Knight.Csv.Injection;
-using White.Knight.Tests.Csv.Unit.Repository;
+using White.Knight.Tests.Csv.Integration.Repositories;
 using White.Knights.Tests.Abstractions;
 using White.Knights.Tests.Abstractions.Extensions;
 using White.Knights.Tests.Abstractions.Repository;

@@ -9,6 +9,24 @@ namespace White.Knight.Injection.Abstractions
 {
     public static class ServiceCollectionExtension
     {
+        public static IServiceCollection AddAttributedRepositories<TA>(
+            this IServiceCollection services,
+            Assembly repositoryAssembly
+        ) where TA : Attribute
+        {
+            services
+                .AddScopedClassesWithAttribute<TA>(
+                    repositoryAssembly,
+                    typeof(IRepository<>)
+                )
+                .AddScopedClassesWithAttribute<TA>(
+                    repositoryAssembly,
+                    typeof(IKeylessRepository<>)
+                );
+
+            return services;
+        }
+
         public static IServiceCollection AddScopedClassesWithAttribute<TA>(
             this IServiceCollection services,
             Assembly assembly,

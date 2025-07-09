@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Csv.Attribute;
 using White.Knight.Csv.Options;
 using White.Knight.Injection.Abstractions;
-using White.Knight.Interfaces;
 
 namespace White.Knight.Csv.Injection
 {
@@ -32,14 +31,7 @@ namespace White.Knight.Csv.Injection
 		)
 		{
 			services
-				.AddScopedClassesWithAttribute<IsCsvRepositoryAttribute>(
-					repositoryAssembly,
-					typeof(IRepository<>)
-				)
-				.AddScopedClassesWithAttribute<IsCsvRepositoryAttribute>(
-					repositoryAssembly,
-					typeof(IKeylessRepository<>)
-				);
+				.AddAttributedRepositories<IsCsvRepositoryAttribute>(repositoryAssembly);
             
 			return services;
 		}
