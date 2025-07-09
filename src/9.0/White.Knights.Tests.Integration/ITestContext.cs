@@ -50,7 +50,7 @@ namespace White.Knights.Tests.Integration
 
         void AssertRecordCount(int expectedCount);
 
-        void AssertOneSpecificRecordExists(int expectedNumber = 400);
+        void AssertOneSpecificRecordExists();
 
         void AssertNoPropertiesPreserved();
 
@@ -59,5 +59,7 @@ namespace White.Knights.Tests.Integration
         void AssertUpdatesWereIncluded();
 
         void AssertResultIsNotNull();
+
+        void AssertFirstRecordIs400();
     }
 }

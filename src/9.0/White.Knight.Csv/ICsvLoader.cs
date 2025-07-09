@@ -7,7 +7,7 @@ namespace White.Knight.Csv
 {
     public interface ICsvLoader<T>
     {
-        Task<IEnumerable<T>> ReadAsync(CancellationToken cancellationToken);
+        Task<IQueryable<T>> ReadAsync(CancellationToken cancellationToken);
 
         Task WriteAsync(IEnumerable<T> records, CancellationToken cancellationToken);
     }

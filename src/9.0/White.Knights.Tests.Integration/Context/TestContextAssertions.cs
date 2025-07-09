@@ -60,7 +60,7 @@ namespace White.Knights.Tests.Integration.Context
             );
         }
 
-        public void AssertOneSpecificRecordExists(int expectedNumber = 400)
+        public void AssertOneSpecificRecordExists()
         {
             Assert.NotEmpty
                 (_results?.Records ?? []);
@@ -69,12 +69,27 @@ namespace White.Knights.Tests.Integration.Context
                 1,
                 _results?.Count
             );
+        }
+
+        public void AssertFirstRecordIs400()
+        {
+            Assert.NotEmpty
+                (_results?.Records ?? []);
+
             Assert.Equal
             (
-                expectedNumber,
-                _results?.Records.ElementAt
-                        (0)
-                    .CustomerNumber
+                4,
+                _results.Records.Count()
+            );
+
+            var firstRecord =
+                _results
+                    .Records
+                    .ElementAt(0);
+
+            Assert.Equal(
+                400,
+                firstRecord.CustomerNumber
             );
         }
 

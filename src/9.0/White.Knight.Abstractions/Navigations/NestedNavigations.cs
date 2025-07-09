@@ -5,15 +5,10 @@ using White.Knight.Interfaces;
 
 namespace White.Knight.Abstractions.Navigations
 {
-	public class NestedNavigations<T> : INavigationStrategy<T> where T : class
+	public class NestedNavigations<T>(Expression<Func<IQueryable<T>, IQueryable<T>>> navigationFunc)
+		: INavigationStrategy<T>
+		where T : new()
 	{
-		private readonly Expression<Func<IQueryable<T>, IQueryable<T>>> _navigationFunc;
-
-		public NestedNavigations(Expression<Func<IQueryable<T>, IQueryable<T>>> navigationFunc)
-		{
-			_navigationFunc = navigationFunc;
-		}
-
-		public Expression<Func<IQueryable<T>, IQueryable<T>>> GetStrategy() => _navigationFunc;
+		public Expression<Func<IQueryable<T>, IQueryable<T>>> GetStrategy() => navigationFunc;
 	}
 }

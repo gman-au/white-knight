@@ -18,7 +18,7 @@ namespace White.Knight.Abstractions.Fluent
             this ISingleRecordCommand<T> command,
             Expression<Func<IQueryable<T>, IQueryable<T>>> navigation
         )
-            where T : class =>
+            where T : new() =>
             command
                 .WithStrategy<T, ISingleRecordCommand<T>>(navigation);
 	}

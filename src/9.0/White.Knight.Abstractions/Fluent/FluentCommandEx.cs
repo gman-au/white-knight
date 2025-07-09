@@ -13,7 +13,7 @@ namespace White.Knight.Abstractions.Fluent
 			Expression<Func<IQueryable<TD>, IQueryable<TD>>> navigation
 		)
 			where TI : ICommand<TD>
-			where TD : class
+			where TD : new()
 		{
 			if (navigation == null) return command;
 			command.NavigationStrategy = new NestedNavigations<TD>(navigation);

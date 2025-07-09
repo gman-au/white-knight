@@ -17,7 +17,7 @@ namespace White.Knight.Abstractions.Specifications
         {
             return Combine(
                 Property,
-                TextExpressions.TextStartsWith(Value)
+                TextExpressions.TextContains(Value)
             );
         }
     }

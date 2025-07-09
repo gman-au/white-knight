@@ -62,7 +62,7 @@ namespace White.Knights.Tests.Integration
                     .ActSearchWithPageSizeTwoAsync();
 
             context
-                .AssertRecordCount(2);
+                .AssertRecordCount(4);
         }
 
         [Fact]
@@ -227,7 +227,7 @@ namespace White.Knights.Tests.Integration
                     .ActSearchSortByNumberDescAsync();
 
             context
-                .AssertOneSpecificRecordExists();
+                .AssertFirstRecordIs400();
         }
 
         [Fact]

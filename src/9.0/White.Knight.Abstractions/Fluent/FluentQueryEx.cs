@@ -62,7 +62,7 @@ namespace White.Knight.Abstractions.Fluent
             this IQueryCommand<TD, TP> command,
             Expression<Func<IQueryable<TD>, IQueryable<TD>>> navigation
         )
-            where TD : class =>
+            where TD : new() =>
             command
                 .WithStrategy<TD, IQueryCommand<TD, TP>>(navigation);
 	}

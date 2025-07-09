@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using White.Knight.Definition;
-using White.Knight.Definition.Exceptions;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
+using White.Knight.Abstractions.Extensions;
 
 namespace White.Knight.Csv
 {
     public abstract class CsvFileKeylessRepositoryBase<TD>(
         CsvRepositoryOptions<TD> repositoryOptions) : IKeylessRepository<TD>
-        where TD : class
+        where TD : new()
     {
         private readonly ICsvLoader<TD> _csvLoader = repositoryOptions.CsvLoader;
         private readonly IRepositoryExceptionWrapper _repositoryExceptionWrapper = repositoryOptions.ExceptionWrapper;
@@ -30,7 +29,12 @@ namespace White.Knight.Csv
                         _csvLoader
                             .ReadAsync(cancellationToken);
 
-                var spec =
+                var results =
+                    await
+                        queryable
+                            .PerformCommandQueryAsync(command);
+
+                /*var spec =
                     command
                         .Specification;
 
@@ -46,13 +50,9 @@ namespace White.Knight.Csv
                     queryable
                         .Where(o => spec.IsSatisfiedBy(o))
                         .Select(o => projectionFunc.Invoke(o))
-                        .ToArray();
+                        .ToArray();*/
 
-                return new RepositoryResult<TP>
-                {
-                    Records = results,
-                    Count = results.Length
-                };
+                return results;
             }
             catch (Exception e)
             {

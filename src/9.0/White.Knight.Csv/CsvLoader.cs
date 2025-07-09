@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -23,7 +22,7 @@ namespace White.Knight.Csv
                 .FolderPath ??
             throw new MissingConfigurationException("CsvRepositoryOptions -> FolderPath");
 
-        public async Task<IEnumerable<TD>> ReadAsync(CancellationToken cancellationToken)
+        public async Task<IQueryable<TD>> ReadAsync(CancellationToken cancellationToken)
         {
             var filePath =
                 Path
@@ -34,12 +33,12 @@ namespace White.Knight.Csv
 
             var records =
                 csvReader
-                    .GetRecords<TD>();
+                    .GetRecords<TD>()
+                    .ToList();
 
             return
                 records
-                    .ToList();
-            // .AsQueryable();
+                    .AsQueryable();
         }
 
         public async Task WriteAsync(IEnumerable<TD> records, CancellationToken cancellationToken)
