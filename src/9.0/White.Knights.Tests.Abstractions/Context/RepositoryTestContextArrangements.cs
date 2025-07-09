@@ -6,13 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Interfaces;
 using White.Knight.Tests.Domain;
-using White.Knights.Tests.Integration.Data;
+using White.Knights.Tests.Abstractions.Data;
 
-namespace White.Knights.Tests.Integration.Context
+namespace White.Knights.Tests.Abstractions.Context
 {
-    public partial class TestContextBase
+    public partial class RepositoryTestContextBase
     {
-        private AbstractedTestData _abstractedTestData = null;
+        private AbstractedRepositoryTestData _abstractedRepositoryTestData = null;
         private IServiceProvider _serviceProvider;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
@@ -54,7 +54,7 @@ namespace White.Knights.Tests.Integration.Context
                 _serviceProvider
                     .GetRequiredService<ITestHarness>();
 
-            _abstractedTestData =
+            _abstractedRepositoryTestData =
                 await
                     testHarness
                         .GenerateRepositoryTestDataAsync();

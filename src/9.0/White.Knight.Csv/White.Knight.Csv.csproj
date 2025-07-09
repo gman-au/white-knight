@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" />
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
       <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
     </ItemGroup>
@@ -13,6 +14,8 @@
         <PackageReference Include="CsvHelper" Version="33.1.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.6"/>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.6" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
     </ItemGroup>
 
 </Project>

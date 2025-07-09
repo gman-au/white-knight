@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using White.Knight.Tests.Domain;
 
-namespace White.Knights.Tests.Integration
+namespace White.Knights.Tests.Abstractions.Data
 {
-    public class AbstractedTestData
+    public class AbstractedRepositoryTestData
     {
         public IEnumerable<Address> Addresses { get; set; }
 

@@ -1,18 +1,19 @@
 ﻿using System.Reflection;
 using White.Knight.Csv.Injection;
 using White.Knight.Tests.Csv.Unit.Repository;
-using White.Knights.Tests.Integration;
-using TestContextBase = White.Knights.Tests.Integration.Context.TestContextBase;
+using White.Knights.Tests.Abstractions;
+using White.Knights.Tests.Abstractions.Context;
+using White.Knights.Tests.Abstractions.Tests;
 
 namespace White.Knight.Tests.Csv.Integration
 {
-    public class CustomerRepositoryTests() : AbstractedTestSheet(new CsvRepositoryTestContext())
+    public class CustomerRepositoryTests() : AbstractedRepositoryTests(new CsvRepositoryTestContext())
     {
         private static readonly Assembly RepositoryAssembly =
             Assembly
                 .GetAssembly(typeof(AddressRepository));
 
-        private class CsvRepositoryTestContext : TestContextBase, ITestContext
+        private class CsvRepositoryTestContext : RepositoryTestContextBase, IRepositoryTestContext
         {
             public CsvRepositoryTestContext()
             {

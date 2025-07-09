@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Xunit;
 
-namespace White.Knights.Tests.Integration
+namespace White.Knights.Tests.Abstractions.Tests
 {
-    public abstract class AbstractedTestSheet(ITestContext context)
+    public abstract class AbstractedRepositoryTests(IRepositoryTestContext context)
     {
         [Fact]
         public virtual async Task Test_Retrieve_Single_Record()

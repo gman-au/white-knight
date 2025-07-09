@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using CsvHelper;
 using Microsoft.Extensions.Options;
 using White.Knight.Csv.Options;
-using White.Knights.Tests.Integration;
-using White.Knights.Tests.Integration.Data;
+using White.Knights.Tests.Abstractions;
+using White.Knights.Tests.Abstractions.Data;
 
 namespace White.Knight.Tests.Csv.Integration
 {
@@ -17,7 +17,7 @@ namespace White.Knight.Tests.Csv.Integration
     {
         private readonly CsvRepositoryConfigurationOptions _options = optionsAccessor.Value;
 
-        public async Task<AbstractedTestData> GenerateRepositoryTestDataAsync()
+        public async Task<AbstractedRepositoryTestData> GenerateRepositoryTestDataAsync()
         {
             var testData =
                 testDataGenerator

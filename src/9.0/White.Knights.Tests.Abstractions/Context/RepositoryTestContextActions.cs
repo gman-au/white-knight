@@ -7,11 +7,11 @@ using White.Knight.Abstractions.Specifications;
 using White.Knight.Interfaces;
 using White.Knight.Tests.Domain;
 using White.Knight.Tests.Domain.Specifications;
-using White.Knights.Tests.Integration.Extensions;
+using White.Knights.Tests.Abstractions.Extensions;
 
-namespace White.Knights.Tests.Integration.Context
+namespace White.Knights.Tests.Abstractions.Context
 {
-    public partial class TestContextBase
+    public partial class RepositoryTestContextBase
     {
         private IRepository<Customer> _sut;
 
@@ -240,7 +240,7 @@ namespace White.Knights.Tests.Integration.Context
         public async Task ActUpdateAsSuppliedAsync()
         {
             var customer =
-                _abstractedTestData
+                _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(0);
 
@@ -260,7 +260,7 @@ namespace White.Knights.Tests.Integration.Context
         public async Task ActUpdateWithExcludingAsync()
         {
             var customer =
-                _abstractedTestData
+                _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(0);
 
@@ -282,7 +282,7 @@ namespace White.Knights.Tests.Integration.Context
         public async Task ActUpdateWithIncludingAsync()
         {
             var customer =
-                _abstractedTestData
+                _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(0);
 
@@ -304,7 +304,7 @@ namespace White.Knights.Tests.Integration.Context
         public async Task ActAddAsync()
         {
             var newCustomer =
-                _abstractedTestData
+                _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(0);
 
@@ -325,7 +325,7 @@ namespace White.Knights.Tests.Integration.Context
         public async Task ActDeleteCustomerAsync()
         {
             _result =
-                _abstractedTestData
+                _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(2);
 

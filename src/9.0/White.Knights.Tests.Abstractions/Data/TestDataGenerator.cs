@@ -5,7 +5,7 @@ using AutoFixture;
 using AutoFixture.AutoMoq;
 using White.Knight.Tests.Domain;
 
-namespace White.Knights.Tests.Integration.Data
+namespace White.Knights.Tests.Abstractions.Data
 {
     public class TestDataGenerator : ITestDataGenerator
     {
@@ -41,14 +41,14 @@ namespace White.Knights.Tests.Integration.Data
                 .Add(new OmitOnRecursionBehavior());
         }
 
-        public AbstractedTestData GenerateRepositoryTestData()
+        public AbstractedRepositoryTestData GenerateRepositoryTestData()
         {
             var countries = GenerateCountries();
             var addresses = GenerateAddresses(countries);
             var orders = GenerateOrders();
             var customers = GenerateCustomers(orders);
 
-            return new AbstractedTestData
+            return new AbstractedRepositoryTestData
             {
                 Addresses = addresses,
                 Customers = customers,

@@ -5,9 +5,9 @@ using White.Knight.Definition;
 using White.Knight.Tests.Domain;
 using Xunit;
 
-namespace White.Knights.Tests.Integration.Context
+namespace White.Knights.Tests.Abstractions.Context
 {
-    public partial class TestContextBase
+    public partial class RepositoryTestContextBase
     {
         private Customer _result;
         private RepositoryResult<Customer> _results;

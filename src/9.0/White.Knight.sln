@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Definition", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Csv", "White.Knight.Csv\White.Knight.Csv.csproj", "{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Csv.Injection", "White.Knight.Csv.Injection\White.Knight.Csv.Injection.csproj", "{93185E1D-B34C-45F3-8E47-3B9A833BDFDF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Abstractions", "White.Knight.Abstractions\White.Knight.Abstractions.csproj", "{30F685DD-722C-4459-B5E8-E36545954B91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Injection.Abstractions", "White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj", "{3775E1BA-8E20-4330-AB7E-5F402F2D1C90}"
@@ -24,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{79D36C74-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Csv.Integration", "White.Knight.Tests.Csv.Integration\White.Knight.Tests.Csv.Integration.csproj", "{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knights.Tests.Integration", "White.Knights.Tests.Integration\White.Knights.Tests.Integration.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knights.Tests.Abstractions", "White.Knights.Tests.Abstractions\White.Knights.Tests.Abstractions.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +42,6 @@ Global
 		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93185E1D-B34C-45F3-8E47-3B9A833BDFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93185E1D-B34C-45F3-8E47-3B9A833BDFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93185E1D-B34C-45F3-8E47-3B9A833BDFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93185E1D-B34C-45F3-8E47-3B9A833BDFDF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Release|Any CPU.ActiveCfg = Release|Any CPU

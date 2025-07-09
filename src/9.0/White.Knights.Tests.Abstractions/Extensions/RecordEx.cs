@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using White.Knight.Definition;
 
-namespace White.Knights.Tests.Integration.Extensions
+namespace White.Knights.Tests.Abstractions.Extensions
 {
     internal static class RecordEx
     {

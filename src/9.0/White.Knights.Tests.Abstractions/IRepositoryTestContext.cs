@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace White.Knights.Tests.Integration
+namespace White.Knights.Tests.Abstractions
 {
-    public interface ITestContext
+    public interface IRepositoryTestContext
     {
         Task ArrangeRepositoryDataAsync();
 
@@ -63,7 +63,7 @@ namespace White.Knights.Tests.Integration
         void AssertResultIsNotNull();
 
         void AssertFirstRecordIs400();
-        
+
         void AssertDeletedRecordNotPresent();
     }
 }
