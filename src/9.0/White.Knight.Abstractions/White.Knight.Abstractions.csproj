@@ -2,10 +2,21 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <DebugType>Embedded</DebugType>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
 </Project>
