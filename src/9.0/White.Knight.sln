@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Csv.Integration", "White.Knight.Tests.Csv.Integration\White.Knight.Tests.Csv.Integration.csproj", "{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knights.Tests.Abstractions", "White.Knights.Tests.Abstractions\White.Knights.Tests.Abstractions.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Abstractions", "White.Knight.Tests.Abstractions\White.Knight.Tests.Abstractions.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

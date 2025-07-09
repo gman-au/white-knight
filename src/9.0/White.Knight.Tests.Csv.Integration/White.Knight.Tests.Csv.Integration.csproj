@@ -25,7 +25,7 @@
       <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
       <ProjectReference Include="..\White.Knight.Csv\White.Knight.Csv.csproj" />
       <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
-      <ProjectReference Include="..\White.Knights.Tests.Abstractions\White.Knights.Tests.Abstractions.csproj" />
+      <ProjectReference Include="..\White.Knight.Tests.Abstractions\White.Knight.Tests.Abstractions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

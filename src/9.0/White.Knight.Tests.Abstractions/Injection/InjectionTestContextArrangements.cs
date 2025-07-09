@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Injection.Abstractions;
 
-namespace White.Knights.Tests.Abstractions.Injection
+namespace White.Knight.Tests.Abstractions.Injection
 {
     public partial class InjectionTestContextBase
     {

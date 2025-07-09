@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using White.Knight.Csv.Injection;
 using White.Knight.Tests.Csv.Integration.Repositories;
-using White.Knights.Tests.Abstractions;
-using White.Knights.Tests.Abstractions.Extensions;
-using White.Knights.Tests.Abstractions.Repository;
-using White.Knights.Tests.Abstractions.Tests;
+using White.Knight.Tests.Abstractions;
+using White.Knight.Tests.Abstractions.Extensions;
+using White.Knight.Tests.Abstractions.Repository;
+using White.Knight.Tests.Abstractions.Tests;
 using Xunit.Abstractions;
 
 namespace White.Knight.Tests.Csv.Integration

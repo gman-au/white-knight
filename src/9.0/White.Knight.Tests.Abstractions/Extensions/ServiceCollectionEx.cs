@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 using Xunit.Extensions.Logging;
 
-namespace White.Knights.Tests.Abstractions.Extensions
+namespace White.Knight.Tests.Abstractions.Extensions
 {
     public static class ServiceCollectionEx
     {

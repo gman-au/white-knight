@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace White.Knights.Tests.Abstractions.Injection
+namespace White.Knight.Tests.Abstractions.Injection
 {
     public partial class InjectionTestContextBase
     {

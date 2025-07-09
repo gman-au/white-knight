@@ -4,9 +4,9 @@ using White.Knight.Csv.Injection;
 using White.Knight.Csv.Options;
 using White.Knight.Tests.Csv.Integration.Repositories;
 using White.Knight.Tests.Domain;
-using White.Knights.Tests.Abstractions;
-using White.Knights.Tests.Abstractions.Injection;
-using White.Knights.Tests.Abstractions.Tests;
+using White.Knight.Tests.Abstractions;
+using White.Knight.Tests.Abstractions.Injection;
+using White.Knight.Tests.Abstractions.Tests;
 
 namespace White.Knight.Tests.Csv.Integration
 {

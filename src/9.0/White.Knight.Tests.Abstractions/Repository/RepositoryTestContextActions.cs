@@ -5,11 +5,11 @@ using White.Knight.Abstractions.Extensions;
 using White.Knight.Abstractions.Fluent;
 using White.Knight.Abstractions.Specifications;
 using White.Knight.Interfaces;
+using White.Knight.Tests.Abstractions.Extensions;
 using White.Knight.Tests.Domain;
 using White.Knight.Tests.Domain.Specifications;
-using White.Knights.Tests.Abstractions.Extensions;
 
-namespace White.Knights.Tests.Abstractions.Repository
+namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {

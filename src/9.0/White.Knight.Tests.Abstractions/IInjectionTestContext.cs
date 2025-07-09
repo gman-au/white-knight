@@ -1,4 +1,4 @@
-﻿namespace White.Knights.Tests.Abstractions
+﻿namespace White.Knight.Tests.Abstractions
 {
     public interface IInjectionTestContext
     {

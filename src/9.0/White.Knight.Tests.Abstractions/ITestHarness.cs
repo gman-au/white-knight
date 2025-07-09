@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using White.Knights.Tests.Abstractions.Data;
+using White.Knight.Tests.Abstractions.Data;
 
-namespace White.Knights.Tests.Abstractions
+namespace White.Knight.Tests.Abstractions
 {
     public interface ITestHarness
     {

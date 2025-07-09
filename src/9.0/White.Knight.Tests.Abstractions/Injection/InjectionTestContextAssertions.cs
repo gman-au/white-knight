@@ -4,7 +4,7 @@ using White.Knight.Interfaces;
 using White.Knight.Tests.Domain;
 using Xunit;
 
-namespace White.Knights.Tests.Abstractions.Injection
+namespace White.Knight.Tests.Abstractions.Injection
 {
     public partial class InjectionTestContextBase
     {

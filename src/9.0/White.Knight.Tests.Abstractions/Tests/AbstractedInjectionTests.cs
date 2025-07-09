@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace White.Knights.Tests.Abstractions.Tests
+namespace White.Knight.Tests.Abstractions.Tests
 {
     public abstract class AbstractedInjectionTests(IInjectionTestContext context)
     {

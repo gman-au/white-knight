@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using CsvHelper;
 using Microsoft.Extensions.Options;
 using White.Knight.Csv.Options;
-using White.Knights.Tests.Abstractions;
-using White.Knights.Tests.Abstractions.Data;
+using White.Knight.Tests.Abstractions;
+using White.Knight.Tests.Abstractions.Data;
 
 namespace White.Knight.Tests.Csv.Integration
 {

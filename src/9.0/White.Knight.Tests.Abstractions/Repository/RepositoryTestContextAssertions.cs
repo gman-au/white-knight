@@ -5,7 +5,7 @@ using White.Knight.Definition;
 using White.Knight.Tests.Domain;
 using Xunit;
 
-namespace White.Knights.Tests.Abstractions.Repository
+namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {

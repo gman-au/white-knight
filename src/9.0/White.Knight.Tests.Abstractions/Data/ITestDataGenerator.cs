@@ -1,4 +1,4 @@
-﻿namespace White.Knights.Tests.Abstractions.Data
+﻿namespace White.Knight.Tests.Abstractions.Data
 {
     public interface ITestDataGenerator
     {

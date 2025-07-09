@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Interfaces;
+using White.Knight.Tests.Abstractions.Data;
 using White.Knight.Tests.Domain;
-using White.Knights.Tests.Abstractions.Data;
 
-namespace White.Knights.Tests.Abstractions.Repository
+namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {

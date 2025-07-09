@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xunit;
 
-namespace White.Knights.Tests.Abstractions.Tests
+namespace White.Knight.Tests.Abstractions.Tests
 {
     public abstract class AbstractedRepositoryTests(IRepositoryTestContext context)
     {

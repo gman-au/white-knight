@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using White.Knight.Tests.Domain;
 
-namespace White.Knights.Tests.Abstractions.Data
+namespace White.Knight.Tests.Abstractions.Data
 {
     public class AbstractedRepositoryTestData
     {
