@@ -27,7 +27,7 @@ namespace White.Knight.Injection.Abstractions
             return services;
         }
 
-        public static IServiceCollection AddScopedClassesWithAttribute<TA>(
+        private static IServiceCollection AddScopedClassesWithAttribute<TA>(
             this IServiceCollection services,
             Assembly assembly,
             Type interfaceType

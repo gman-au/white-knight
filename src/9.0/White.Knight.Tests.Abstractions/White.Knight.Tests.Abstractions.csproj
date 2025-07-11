@@ -11,25 +11,47 @@
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IncludeReferencedProjects>true</IncludeReferencedProjects>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Company>G-MAN Solutions</Company>
+        <Authors>Gabriel Palma</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>White.Knight.Tests.Abstractions</PackageId>
+        <Description>White Knight Test Abstraction Library</Description>
+        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
+    </PropertyGroup>
+
     <ItemGroup>
-        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
-        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" />
-        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj"/>
-        <ProjectReference Include="..\White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj" />
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
-        <PackageReference Include="AutoFixture" Version="4.18.1" />
-        <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
+        <PackageReference Include="AutoFixture" Version="4.18.1"/>
+        <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1"/>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6"/>
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6" />
-        <PackageReference Include="xunit.assert" Version="2.5.3" />
-        <PackageReference Include="xunit.extensibility.core" Version="2.5.3" />
-        <PackageReference Include="Xunit.Extensions.Logging" Version="1.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.6"/>
+        <PackageReference Include="xunit.assert" Version="2.5.3"/>
+        <PackageReference Include="xunit.extensibility.core" Version="2.5.3"/>
+        <PackageReference Include="Xunit.Extensions.Logging" Version="1.1.0"/>
+    </ItemGroup>
+
+    <!-- Include referenced project outputs -->
+    <ItemGroup>
+        <None Include="$(OutputPath)White.Knight.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)White.Knight.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
     </ItemGroup>
 
 </Project>

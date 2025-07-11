@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Interfaces", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Domain", "White.Knight.Domain\White.Knight.Domain.csproj", "{89A5141B-B98A-40E4-89A0-E26C41141641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Csv", "White.Knight.Csv\White.Knight.Csv.csproj", "{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Abstractions", "White.Knight.Abstractions\White.Knight.Abstractions.csproj", "{30F685DD-722C-4459-B5E8-E36545954B91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Injection.Abstractions", "White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj", "{3775E1BA-8E20-4330-AB7E-5F402F2D1C90}"
@@ -13,10 +11,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{82D2F55A-DED4-4996-89F7-DFB9196685A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Domain", "White.Knight.Tests.Domain\White.Knight.Tests.Domain.csproj", "{E2891590-314E-4624-AD4E-6295EDD3191F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{6ED00990-3F7F-44BA-9338-4DBEA5C8CF24}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Csv.Integration", "White.Knight.Tests.Csv.Integration\White.Knight.Tests.Csv.Integration.csproj", "{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Abstractions", "White.Knight.Tests.Abstractions\White.Knight.Tests.Abstractions.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
 EndProject
@@ -36,10 +30,6 @@ Global
 		{89A5141B-B98A-40E4-89A0-E26C41141641}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A5141B-B98A-40E4-89A0-E26C41141641}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A5141B-B98A-40E4-89A0-E26C41141641}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F685DD-722C-4459-B5E8-E36545954B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,10 +42,6 @@ Global
 		{E2891590-314E-4624-AD4E-6295EDD3191F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2891590-314E-4624-AD4E-6295EDD3191F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2891590-314E-4624-AD4E-6295EDD3191F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,9 +52,7 @@ Global
 		{99B2A876-1C89-4C2D-A812-A22E00C629F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6ED00990-3F7F-44BA-9338-4DBEA5C8CF24} = {82D2F55A-DED4-4996-89F7-DFB9196685A7}
 		{E2891590-314E-4624-AD4E-6295EDD3191F} = {82D2F55A-DED4-4996-89F7-DFB9196685A7}
-		{FF28998D-8F4D-4D85-8775-B2F3AE2BC7B9} = {6ED00990-3F7F-44BA-9338-4DBEA5C8CF24}
 		{EE918B00-B6E5-47F8-AF96-81616DB14993} = {82D2F55A-DED4-4996-89F7-DFB9196685A7}
 	EndGlobalSection
 EndGlobal
