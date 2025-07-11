@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Csv.Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Tests.Abstractions", "White.Knight.Tests.Abstractions\White.Knight.Tests.Abstractions.csproj", "{EE918B00-B6E5-47F8-AF96-81616DB14993}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight", "White.Knight\White.Knight.csproj", "{99B2A876-1C89-4C2D-A812-A22E00C629F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE918B00-B6E5-47F8-AF96-81616DB14993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B2A876-1C89-4C2D-A812-A22E00C629F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B2A876-1C89-4C2D-A812-A22E00C629F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B2A876-1C89-4C2D-A812-A22E00C629F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B2A876-1C89-4C2D-A812-A22E00C629F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6ED00990-3F7F-44BA-9338-4DBEA5C8CF24} = {82D2F55A-DED4-4996-89F7-DFB9196685A7}

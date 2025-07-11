@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+        <DebugType>Embedded</DebugType>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>false</IncludeSymbols>
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IncludeReferencedProjects>true</IncludeReferencedProjects>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Company>G-MAN Solutions</Company>
+        <Authors>Gabriel Palma</Authors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>White.Knight</PackageId>
+        <Description>White Knight Core</Description>
+        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <!-- Include referenced project outputs -->
+    <ItemGroup>
+        <None Include="$(OutputPath)White.Knight.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+        <None Include="$(OutputPath)White.Knight.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+    </ItemGroup>
+
+</Project>
