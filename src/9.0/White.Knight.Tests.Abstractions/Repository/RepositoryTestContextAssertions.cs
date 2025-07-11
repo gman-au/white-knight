@@ -43,7 +43,7 @@ namespace White.Knight.Tests.Abstractions.Repository
                 (exceptions);
             Assert.Equal
             (
-                "Could not use key System.Double against repository of type White.Knight.Domain.Tests.Domain.Customer",
+                "Could not use key System.Double against repository of type White.Knight.Tests.Domain.Customer",
                 exceptions.ElementAt
                         (0)
                     .Message
