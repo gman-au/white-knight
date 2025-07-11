@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using White.Knight.Exceptions;
+using White.Knight.Domain.Exceptions;
 
 namespace White.Knight.Abstractions.Extensions
 {

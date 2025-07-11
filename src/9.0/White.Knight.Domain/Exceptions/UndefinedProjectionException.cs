@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace White.Knight.Exceptions
+namespace White.Knight.Domain.Exceptions
 {
     public class UndefinedProjectionException : Exception
     {

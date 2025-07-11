@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using Microsoft.Extensions.Options;
 using White.Knight.Csv.Options;
-using White.Knight.Exceptions;
+using White.Knight.Domain.Exceptions;
 
 namespace White.Knight.Csv
 {

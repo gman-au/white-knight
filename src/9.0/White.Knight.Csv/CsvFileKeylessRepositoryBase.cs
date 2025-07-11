@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using White.Knight.Abstractions.Extensions;
 using White.Knight.Csv.Options;
+using White.Knight.Domain;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
 

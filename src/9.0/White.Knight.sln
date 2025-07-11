@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Interfaces", "White.Knight.Interfaces\White.Knight.Interfaces.csproj", "{FB5A35B7-3AE1-46CC-8A30-CB11988A2FBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight", "White.Knight\White.Knight.csproj", "{89A5141B-B98A-40E4-89A0-E26C41141641}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Domain", "White.Knight.Domain\White.Knight.Domain.csproj", "{89A5141B-B98A-40E4-89A0-E26C41141641}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Knight.Csv", "White.Knight.Csv\White.Knight.Csv.csproj", "{9F52A79C-7CE3-4E66-AB89-C3A8EE3C136D}"
 EndProject

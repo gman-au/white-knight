@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>White.Knight</PackageId>
+        <PackageId>White.Knight.Domain</PackageId>
         <Description>White Knight</Description>
         <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
     </PropertyGroup>

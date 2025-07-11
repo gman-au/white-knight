@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace White.Knight.Options
+namespace White.Knight.Domain.Options
 {
 	public class ProjectionOptions<TD, TP>
 	{

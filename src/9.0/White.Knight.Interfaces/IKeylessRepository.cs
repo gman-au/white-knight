@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using White.Knight.Domain;
 using White.Knight.Interfaces.Command;
 
 namespace White.Knight.Interfaces

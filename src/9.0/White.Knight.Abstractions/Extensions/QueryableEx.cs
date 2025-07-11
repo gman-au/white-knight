@@ -3,7 +3,8 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using White.Knight.Options;
+using White.Knight.Domain;
+using White.Knight.Domain.Options;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
 
