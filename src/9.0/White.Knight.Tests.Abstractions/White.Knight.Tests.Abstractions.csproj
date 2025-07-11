@@ -6,7 +6,8 @@
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
         <DebugType>Embedded</DebugType>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>false</IncludeSymbols>
+        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeSource>true</IncludeSource>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <OutputType>Library</OutputType>
@@ -53,6 +54,8 @@
     <ItemGroup>
         <None Include="$(OutputPath)White.Knight.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
         <None Include="$(OutputPath)White.Knight.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)White.Knight.*.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)" />
+        <None Include="$(OutputPath)White.Knight.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)" />
     </ItemGroup>
 
 </Project>
