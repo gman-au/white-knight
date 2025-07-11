@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace White.Knight.Definition
+namespace White.Knight
 {
 	public class RepositoryResult<T>
 	{

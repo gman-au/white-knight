@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using White.Knight.Definition;
 using White.Knight.Tests.Domain;
 using Xunit;
 

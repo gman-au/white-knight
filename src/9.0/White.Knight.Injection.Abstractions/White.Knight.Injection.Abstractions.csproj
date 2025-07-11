@@ -2,24 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <DebugType>Embedded</DebugType>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <Company>G-MAN Solutions</Company>
-        <Authors>Gabriel Palma</Authors>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PackageId>White.Knight.Injection.Abstractions</PackageId>
-        <Description>White Knight</Description>
-        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

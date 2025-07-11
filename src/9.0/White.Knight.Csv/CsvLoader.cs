@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using Microsoft.Extensions.Options;
 using White.Knight.Csv.Options;
-using White.Knight.Definition.Exceptions;
+using White.Knight.Exceptions;
 
 namespace White.Knight.Csv
 {
@@ -20,7 +20,7 @@ namespace White.Knight.Csv
         private readonly string _folderPath =
             optionsAccessor?.Value
                 .FolderPath ??
-            throw new MissingConfigurationException("CsvRepositoryOptions -> FolderPath");
+            throw new MissingConfigurationException("CsvRepositoryConfigurationOptions -> FolderPath");
 
         public async Task<IQueryable<TD>> ReadAsync(CancellationToken cancellationToken)
         {

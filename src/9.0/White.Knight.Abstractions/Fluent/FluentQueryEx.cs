@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 using White.Knight.Abstractions.Command;
-using White.Knight.Definition.Options;
+using White.Knight.Options;
 using White.Knight.Interfaces.Command;
 using White.Knight.Interfaces.Spec;
 

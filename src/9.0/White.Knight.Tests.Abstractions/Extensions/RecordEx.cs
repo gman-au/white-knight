@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using White.Knight.Definition;
 
 namespace White.Knight.Tests.Abstractions.Extensions
 {

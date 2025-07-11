@@ -2,27 +2,10 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <DebugType>Embedded</DebugType>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>false</IncludeSymbols>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <Company>G-MAN Solutions</Company>
-        <Authors>Gabriel Palma</Authors>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <PackageId>White.Knight.Interfaces</PackageId>
-        <Description>White Knight</Description>
-        <RepositoryUrl>https://github.com/gman-au/white-knight</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\White.Knight.Definition\White.Knight.Definition.csproj" />
+      <ProjectReference Include="..\White.Knight\White.Knight.csproj" />
     </ItemGroup>
 
     <ItemGroup>

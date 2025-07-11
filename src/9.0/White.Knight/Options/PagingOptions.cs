@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace White.Knight.Definition.Options
+namespace White.Knight.Options
 {
 	public class PagingOptions<T>
 	{

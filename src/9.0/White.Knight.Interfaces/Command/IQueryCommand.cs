@@ -1,4 +1,4 @@
-﻿using White.Knight.Definition.Options;
+﻿using White.Knight.Options;
 using White.Knight.Interfaces.Spec;
 
 namespace White.Knight.Interfaces.Command

@@ -3,12 +3,18 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
         <DebugType>Embedded</DebugType>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <IncludeReferencedProjects>true</IncludeReferencedProjects>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -23,9 +29,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj"/>
-        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj"/>
-        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
+        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" PrivateAssets="All"/>
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -35,6 +41,13 @@
         <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.6"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6"/>
+    </ItemGroup>
+
+    <!-- Include referenced project outputs -->
+    <ItemGroup>
+        <None Include="$(OutputPath)White.Knight.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+        <None Include="$(OutputPath)White.Knight.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+        <None Include="$(OutputPath)White.Knight.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
     </ItemGroup>
 
 </Project>
