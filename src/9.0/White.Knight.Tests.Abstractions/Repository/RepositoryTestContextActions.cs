@@ -13,13 +13,13 @@ namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
-        private IRepository<Customer> _sut;
+        protected IRepository<Customer> Sut;
 
         public virtual async Task ActSearchByAllAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new SpecificationByAll<Customer>()
@@ -31,7 +31,7 @@ namespace White.Knight.Tests.Abstractions.Repository
         {
             var result =
                 await
-                    _sut
+                    Sut
                         .SingleRecordAsync
                         (
                             Guid
@@ -40,7 +40,7 @@ namespace White.Knight.Tests.Abstractions.Repository
                                 .ToSingleRecordCommand<Customer>()
                         );
 
-            _results =
+            Results =
                 RecordEx
                     .ToMockResults(result);
         }
@@ -49,20 +49,20 @@ namespace White.Knight.Tests.Abstractions.Repository
         {
             var result =
                 await
-                    _sut
+                    Sut
                         .SingleRecordAsync
                             (49.0d);
 
-            _results =
+            Results =
                 RecordEx
                     .ToMockResults(result);
         }
 
         public virtual async Task ActSearchWithPageSizeTwoAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new SpecificationByAll<Customer>()
@@ -77,9 +77,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByCustomerNumberAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerNumber
@@ -90,9 +90,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByOrCustomerNumberAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerNumber
@@ -113,9 +113,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByCustomerTypeAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByType((int)CustomerTypeEnum.New)
@@ -125,9 +125,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByOtherGuidAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByOtherGuid(Guid.Parse("f12ace2b2505671db811b10fb73ed714"))
@@ -137,9 +137,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByNameAndNumberAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerName
@@ -155,9 +155,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByFavouriteOrderIdAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByFavouriteOrderId
@@ -168,9 +168,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByExampleAutoCompleteTextAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             (new SpecificationByAll<Customer>() &
@@ -184,9 +184,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByNameExactAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerNameExact
@@ -197,9 +197,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByNameContainsAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerNameContains
@@ -210,9 +210,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchByNameStartsWithAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new CustomerSpecByCustomerNameStartsWith
@@ -223,9 +223,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActSearchSortByNumberDescAsync()
         {
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new SpecificationByAll<Customer>()
@@ -247,9 +247,9 @@ namespace White.Knight.Tests.Abstractions.Repository
             customer.CustomerName = "Jeff";
             customer.CustomerNumber = 200;
 
-            _result =
+            Result =
                 await
-                    _sut
+                    Sut
                         .AddOrUpdateAsync
                         (
                             customer
@@ -267,9 +267,9 @@ namespace White.Knight.Tests.Abstractions.Repository
             customer.CustomerName = "Jeff";
             customer.CustomerNumber = 200;
 
-            _result =
+            Result =
                 await
-                    _sut
+                    Sut
                         .AddOrUpdateAsync
                         (
                             customer
@@ -289,9 +289,9 @@ namespace White.Knight.Tests.Abstractions.Repository
             customer.CustomerName = "Jeff";
             customer.CustomerNumber = 200;
 
-            _result =
+            Result =
                 await
-                    _sut
+                    Sut
                         .AddOrUpdateAsync
                         (
                             customer
@@ -312,9 +312,9 @@ namespace White.Knight.Tests.Abstractions.Repository
                 Guid
                     .Empty;
 
-            _result =
+            Result =
                 await
-                    _sut
+                    Sut
                         .AddOrUpdateAsync
                         (
                             newCustomer
@@ -324,26 +324,26 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         public virtual async Task ActDeleteCustomerAsync()
         {
-            _result =
+            Result =
                 _abstractedRepositoryTestData
                     .Customers
                     .ElementAt(2);
 
             var customerIdToDelete =
-                _result
+                Result
                     .CustomerId;
 
             await
-                _sut
+                Sut
                     .DeleteRecordAsync
                     (
                         customerIdToDelete
                             .ToSingleRecordCommand<Customer>()
                     );
 
-            _results =
+            Results =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                         (
                             new SpecificationByAll<Customer>()
@@ -366,9 +366,9 @@ namespace White.Knight.Tests.Abstractions.Repository
                         }
                     );
 
-            _projectedResults =
+            ProjectedResults =
                 await
-                    _sut
+                    Sut
                         .QueryAsync
                             (command);
         }

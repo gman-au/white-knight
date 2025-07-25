@@ -9,24 +9,24 @@ namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
-        private Customer _result;
-        private RepositoryResult<Customer> _results;
-        private RepositoryResult<ProjectedCustomer> _projectedResults;
+        protected Customer Result;
+        protected RepositoryResult<Customer> Results;
+        protected RepositoryResult<ProjectedCustomer> ProjectedResults;
 
         public void AssertKeyRecordIsReturned()
         {
-            Assert.NotEmpty(_results?.Records ?? []);
+            Assert.NotEmpty(Results?.Records ?? []);
 
             Assert.Equal
             (
                 1,
-                _results?.Count
+                Results?.Count
             );
             Assert.Equal
             (
                 Guid.Parse
                     ("0af8f23dbb9046dca90144ca6d801df7"),
-                _results?.Records?.ElementAt
+                Results?.Records?.ElementAt
                         (0)
                     .CustomerId
             );
@@ -53,38 +53,38 @@ namespace White.Knight.Tests.Abstractions.Repository
         public void AssertRecordCount(int expectedCount)
         {
             Assert.NotEmpty
-                (_results?.Records ?? []);
+                (Results?.Records ?? []);
             Assert.Equal
             (
                 expectedCount,
-                _results?.Count
+                Results?.Count
             );
         }
 
         public void AssertOneSpecificRecordExists()
         {
             Assert.NotEmpty
-                (_results?.Records ?? []);
+                (Results?.Records ?? []);
             Assert.Equal
             (
                 1,
-                _results?.Count
+                Results?.Count
             );
         }
 
         public void AssertFirstRecordIs400()
         {
             Assert.NotEmpty
-                (_results?.Records ?? []);
+                (Results?.Records ?? []);
 
             Assert.Equal
             (
                 4,
-                _results.Records.Count()
+                Results.Records.Count()
             );
 
             var firstRecord =
-                _results
+                Results
                     .Records
                     .ElementAt(0);
 
@@ -97,48 +97,48 @@ namespace White.Knight.Tests.Abstractions.Repository
         public void AssertNoPropertiesPreserved()
         {
             Assert.NotNull
-                (_result);
+                (Result);
             Assert.Equal
             (
                 200,
-                _result.CustomerNumber
+                Result.CustomerNumber
             );
             Assert.Equal
             (
                 "Jeff",
-                _result.CustomerName
+                Result.CustomerName
             );
         }
 
         public void AssertUpdatesWereExcluded()
         {
             Assert.NotNull
-                (_result);
+                (Result);
             Assert.Equal
             (
                 200,
-                _result.CustomerNumber
+                Result.CustomerNumber
             );
             Assert.Equal
             (
                 "Arthur",
-                _result.CustomerName
+                Result.CustomerName
             );
         }
 
         public void AssertUpdatesWereIncluded()
         {
             Assert.NotNull
-                (_result);
+                (Result);
             Assert.Equal
             (
                 100,
-                _result.CustomerNumber
+                Result.CustomerNumber
             );
             Assert.Equal
             (
                 "Jeff",
-                _result.CustomerName
+                Result.CustomerName
             );
         }
 
@@ -146,36 +146,36 @@ namespace White.Knight.Tests.Abstractions.Repository
         {
             Assert
                 .NotNull
-                    (_result);
+                    (Result);
         }
 
         public void AssertDeletedRecordNotPresent()
         {
             Assert.NotEmpty
-                (_results?.Records ?? []);
+                (Results?.Records ?? []);
             Assert.Equal
             (
                 3,
-                _results?.Count
+                Results?.Count
             );
             Assert.DoesNotContain
             (
-                _results.Records,
-                r => r.CustomerId == _result.CustomerId
+                Results.Records,
+                r => r.CustomerId == Result.CustomerId
             );
         }
 
         public void AssertRecordsAreProjectedWithoutNesting()
         {
-            Assert.NotEmpty(_projectedResults?.Records ?? []);
+            Assert.NotEmpty(ProjectedResults?.Records ?? []);
             Assert.Equal
             (
                 3,
-                _projectedResults?.Count
+                ProjectedResults?.Count
             );
 
             var customer =
-                _projectedResults
+                ProjectedResults
                     .Records
                     .ElementAt(0);
 

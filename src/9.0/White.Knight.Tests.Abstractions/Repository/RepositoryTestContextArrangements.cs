@@ -55,7 +55,7 @@ namespace White.Knight.Tests.Abstractions.Repository
                 ServiceCollection
                     .BuildServiceProvider();
 
-            _sut =
+            Sut =
                 _serviceProvider
                     .GetRequiredService<IRepository<Customer>>();
         }
