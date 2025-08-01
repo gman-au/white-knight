@@ -26,7 +26,7 @@ namespace White.Knight.Tests.Abstractions.Repository
             _abstractedRepositoryTestData =
                 await
                     testHarness
-                        .GenerateRepositoryTestDataAsync();
+                        .SetupRepositoryTestDataAsync();
         }
 
         protected void LoadTestConfiguration<T>() where T : class, ITestHarness

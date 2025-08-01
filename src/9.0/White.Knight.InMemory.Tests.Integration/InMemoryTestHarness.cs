@@ -21,7 +21,7 @@ namespace White.Knight.InMemory.Tests.Integration
     {
         private readonly InMemoryRepositoryConfigurationOptions _options = optionsAccessor.Value;
 
-        public async Task<AbstractedRepositoryTestData> GenerateRepositoryTestDataAsync()
+        public async Task<AbstractedRepositoryTestData> SetupRepositoryTestDataAsync()
         {
             var testData =
                 testDataGenerator

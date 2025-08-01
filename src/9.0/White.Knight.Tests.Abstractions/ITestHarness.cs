@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using White.Knight.Tests.Abstractions.Data;
 
 namespace White.Knight.Tests.Abstractions
 {
-    public interface ITestHarness : IDisposable
+    public interface ITestHarness
     {
-        public Task<AbstractedRepositoryTestData> GenerateRepositoryTestDataAsync();
+        public Task<AbstractedRepositoryTestData> SetupRepositoryTestDataAsync();
     }
 }
