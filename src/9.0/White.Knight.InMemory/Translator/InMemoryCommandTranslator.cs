@@ -39,7 +39,7 @@ namespace White.Knight.InMemory.Translator
             var query = $"RUN QUERY OF {typeof(TD).Name.ToUpper()} FILTER BY X Y Z";
 
             _logger
-                .LogDebug("Translated Query: [{query}]", query);
+                .LogDebug("Translated Query: ({specification}) [{query}]", specification.GetType().Name, query);
 
             return new InMemoryTranslationResult
             {
