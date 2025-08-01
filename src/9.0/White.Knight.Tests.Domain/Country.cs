@@ -5,12 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace White.Knight.Tests.Domain
 {
-	public class Country
-	{
+    public class Country
+    {
         [JsonPropertyName("id")]
-		[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public Guid CountryId { get; set; }
-        
-		public string CountryName { get; set; }
-	}
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid CountryId { get; set; }
+
+        public string CountryName { get; set; }
+    }
 }

@@ -23,8 +23,6 @@ namespace White.Knight.Tests.Abstractions.Data
 
         private readonly IFixture _fixture;
 
-        private static Guid OtherGuid => Guid.Parse("f12ace2b2505671db811b10fb73ed714");
-
         public TestDataGenerator()
         {
             _fixture =
@@ -40,6 +38,8 @@ namespace White.Knight.Tests.Abstractions.Data
                 .Behaviors
                 .Add(new OmitOnRecursionBehavior());
         }
+
+        private static Guid OtherGuid => Guid.Parse("f12ace2b2505671db811b10fb73ed714");
 
         public AbstractedRepositoryTestData GenerateRepositoryTestData()
         {

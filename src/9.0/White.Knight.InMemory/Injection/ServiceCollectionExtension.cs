@@ -9,10 +9,10 @@ using White.Knight.Interfaces;
 
 namespace White.Knight.InMemory.Injection
 {
-	public static class ServiceCollectionExtension
-	{
+    public static class ServiceCollectionExtension
+    {
         public static IServiceCollection AddInMemoryRepositories(
-            this IServiceCollection services, 
+            this IServiceCollection services,
             IConfigurationRoot configuration)
         {
             services
@@ -30,23 +30,23 @@ namespace White.Knight.InMemory.Injection
             return services;
         }
 
-		public static IServiceCollection AddAttributedInMemoryRepositories(
-			this IServiceCollection services,
-			Assembly repositoryAssembly
-		)
+        public static IServiceCollection AddAttributedInMemoryRepositories(
+            this IServiceCollection services,
+            Assembly repositoryAssembly
+        )
         {
             services
                 .AddAttributedRepositories<IsInMemoryRepositoryAttribute>(repositoryAssembly);
 
-			return services;
-		}
+            return services;
+        }
 
-		public static IServiceCollection AddInMemoryRepositoryFeatures(this IServiceCollection services)
+        public static IServiceCollection AddInMemoryRepositoryFeatures(this IServiceCollection services)
         {
             services
                 .AddScoped(typeof(IInMemoryRepositoryFeatures<>), typeof(InMemoryRepositoryFeatures<>));
 
-			return services;
-		}
-	}
+            return services;
+        }
+    }
 }

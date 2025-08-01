@@ -7,7 +7,7 @@ namespace White.Knight.Tests.Abstractions
         Task ArrangeRepositoryDataAsync();
 
         Task ActSearchByAllAsync();
-        
+
         Task ActSearchByValidKeyAsync();
 
         Task ActSearchByInvalidKeyAsync();

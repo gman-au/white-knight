@@ -10,6 +10,9 @@ namespace White.Knight.InMemory.Tests.Integration.Repositories
     public class AddressRepository(IInMemoryRepositoryFeatures<Address> repositoryFeatures)
         : InMemoryKeylessRepositoryBase<Address>(repositoryFeatures)
     {
-        public override Expression<Func<Address, object>> DefaultOrderBy() => o => o.AddressId;
+        public override Expression<Func<Address, object>> DefaultOrderBy()
+        {
+            return o => o.AddressId;
+        }
     }
 }

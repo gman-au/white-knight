@@ -5,21 +5,21 @@ using System.Text.Json.Serialization;
 
 namespace White.Knight.Tests.Domain
 {
-	public sealed class Order
-	{
+    public sealed class Order
+    {
         [JsonPropertyName("id")]
-		[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public Guid OrderId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid OrderId { get; set; }
 
-		[Required, ForeignKey("Customer")]
-		public Guid CustomerId { get; set; }
+        [Required] [ForeignKey("Customer")] public Guid CustomerId { get; set; }
 
-		public string OrderKey { get; set; }
+        public string OrderKey { get; set; }
 
-		public bool Active { get; set; }
+        public bool Active { get; set; }
 
-		public DateTime OrderCreated { get; set; }
+        public DateTime OrderCreated { get; set; }
 
-		public Customer Customer { get; set; }
-	}
+        public Customer Customer { get; set; }
+    }
 }

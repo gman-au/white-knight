@@ -11,9 +11,9 @@ namespace White.Knight.Tests.Abstractions.Spec
     public partial class SpecificationTestContextBase<TResponse>
     {
         private IServiceProvider _serviceProvider;
-        protected Assembly SpecificationAssembly;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
+        protected Assembly SpecificationAssembly;
 
         protected void LoadTestConfiguration()
         {

@@ -8,8 +8,8 @@ namespace White.Knight.Tests.Abstractions.Injection
 {
     public partial class InjectionTestContextBase
     {
-        protected IConfigurationRoot Configuration;
         protected readonly ServiceCollection ServiceCollection = [];
+        protected IConfigurationRoot Configuration;
         protected IServiceProvider Sut;
 
         public virtual void ArrangeImplementedServices()

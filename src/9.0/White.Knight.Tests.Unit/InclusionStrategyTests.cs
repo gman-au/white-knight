@@ -57,11 +57,11 @@ namespace White.Knight.Tests.Unit
 
         private class TestContext
         {
+            private readonly IFixture _fixture;
+            private Expression<Func<Customer, object>>[] _fieldsToExclude;
+            private Expression<Func<Customer, object>>[] _fieldsToInclude;
             private Customer _sourceEntity;
             private Customer _targetEntity;
-            private readonly IFixture _fixture;
-            private Expression<Func<Customer, object>>[] _fieldsToInclude;
-            private Expression<Func<Customer, object>>[] _fieldsToExclude;
 
             public TestContext()
             {
@@ -106,8 +106,15 @@ namespace White.Knight.Tests.Unit
                         .Create();
             }
 
-            public void ArrangeNoInclusions() => _fieldsToInclude = null;
-            public void ArrangeNoExclusions() => _fieldsToExclude = null;
+            public void ArrangeNoInclusions()
+            {
+                _fieldsToInclude = null;
+            }
+
+            public void ArrangeNoExclusions()
+            {
+                _fieldsToExclude = null;
+            }
 
             public void ArrangeAllExclusions()
             {

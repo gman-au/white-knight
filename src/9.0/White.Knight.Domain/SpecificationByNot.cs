@@ -4,6 +4,9 @@ namespace White.Knight.Domain
     {
         public Specification<T> Spec { get; } = value;
 
-        public override bool IsSatisfiedBy(T entity) => !Spec.IsSatisfiedBy(entity);
+        public override bool IsSatisfiedBy(T entity)
+        {
+            return !Spec.IsSatisfiedBy(entity);
+        }
     }
 }

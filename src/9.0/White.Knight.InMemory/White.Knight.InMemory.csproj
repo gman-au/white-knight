@@ -5,9 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj" />
-        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
-        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj" />
+        <ProjectReference Include="..\White.Knight.Interfaces\White.Knight.Interfaces.csproj"/>
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
+        <ProjectReference Include="..\White.Knight.Injection.Abstractions\White.Knight.Injection.Abstractions.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

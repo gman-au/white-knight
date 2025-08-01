@@ -6,6 +6,9 @@ namespace White.Knight.Domain
 
         public Specification<T> Right { get; } = right;
 
-        public override bool IsSatisfiedBy(T entity) => Left.IsSatisfiedBy(entity) && Right.IsSatisfiedBy(entity);
+        public override bool IsSatisfiedBy(T entity)
+        {
+            return Left.IsSatisfiedBy(entity) && Right.IsSatisfiedBy(entity);
+        }
     }
 }

@@ -18,9 +18,9 @@ namespace White.Knight.InMemory
         where TD : new()
     {
         private readonly IRepositoryExceptionRethrower _repositoryExceptionRethrower = repositoryFeatures.ExceptionRethrower;
-        protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<InMemoryKeylessRepositoryBase<TD>>();
         protected readonly ICache<TD> Cache = repositoryFeatures.Cache;
         protected readonly ICommandTranslator<TD, InMemoryTranslationResult> CommandTranslator = repositoryFeatures.CommandTranslator;
+        protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<InMemoryKeylessRepositoryBase<TD>>();
         protected readonly Stopwatch Stopwatch = new();
 
         public abstract Expression<Func<TD, object>> DefaultOrderBy();

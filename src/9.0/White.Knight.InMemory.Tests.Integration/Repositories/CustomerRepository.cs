@@ -10,6 +10,9 @@ namespace White.Knight.InMemory.Tests.Integration.Repositories
     public class CustomerRepository(IInMemoryRepositoryFeatures<Customer> repositoryFeatures)
         : InMemoryRepositoryBase<Customer>(repositoryFeatures)
     {
-        public override Expression<Func<Customer, object>> KeyExpression() => b => b.CustomerId;
+        public override Expression<Func<Customer, object>> KeyExpression()
+        {
+            return b => b.CustomerId;
+        }
     }
 }
