@@ -13,5 +13,10 @@
         {
             return new SpecificationByOr<T>(a, b);
         }
+
+        public static Specification<T> operator !(Specification<T> a)
+        {
+            return new SpecificationByNot<T>(a);
+        }
     }
 }
