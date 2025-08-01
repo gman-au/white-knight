@@ -56,5 +56,9 @@ namespace White.Knight.InMemory.Tests.Integration
                         );
             }
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

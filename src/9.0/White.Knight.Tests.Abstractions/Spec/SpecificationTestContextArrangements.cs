@@ -10,7 +10,7 @@ namespace White.Knight.Tests.Abstractions.Spec
 {
     public partial class SpecificationTestContextBase<TResponse>
     {
-        private IServiceProvider _serviceProvider;
+        protected IServiceProvider ServiceProvider;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
         protected Assembly SpecificationAssembly;
@@ -33,12 +33,12 @@ namespace White.Knight.Tests.Abstractions.Spec
 
         protected void LoadServiceProvider()
         {
-            _serviceProvider =
+            ServiceProvider =
                 ServiceCollection
                     .BuildServiceProvider();
 
             Sut =
-                _serviceProvider
+                ServiceProvider
                     .GetRequiredService<ICommandTranslator<Customer, TResponse>>();
         }
     }
