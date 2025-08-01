@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Injection.Abstractions;
 using White.Knight.InMemory.Attribute;
 using White.Knight.InMemory.Options;
+using White.Knight.InMemory.Translator;
+using White.Knight.Interfaces;
 
 namespace White.Knight.InMemory.Injection
 {
@@ -21,6 +23,9 @@ namespace White.Knight.InMemory.Injection
 
             services
                 .AddSingleton(typeof(ICache<>), typeof(Cache<>));
+
+            services
+                .AddScoped(typeof(ICommandTranslator<,>), typeof(InMemoryCommandTranslator<,>));
 
             return services;
         }

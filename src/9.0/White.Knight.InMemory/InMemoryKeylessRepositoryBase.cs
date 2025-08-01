@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using White.Knight.Abstractions.Extensions;
 using White.Knight.Domain;
 using White.Knight.InMemory.Options;
+using White.Knight.InMemory.Translator;
 using White.Knight.Interfaces;
 using White.Knight.Interfaces.Command;
 
@@ -19,6 +20,7 @@ namespace White.Knight.InMemory
         private readonly IRepositoryExceptionRethrower _repositoryExceptionRethrower = repositoryFeatures.ExceptionRethrower;
         protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<InMemoryKeylessRepositoryBase<TD>>();
         protected readonly ICache<TD> Cache = repositoryFeatures.Cache;
+        protected readonly ICommandTranslator<TD, InMemoryTranslationResult> CommandTranslator = repositoryFeatures.CommandTranslator;
         protected readonly Stopwatch Stopwatch = new();
 
         public abstract Expression<Func<TD, object>> DefaultOrderBy();
@@ -34,6 +36,14 @@ namespace White.Knight.InMemory
 
                 Stopwatch
                     .Restart();
+
+                /*
+                 * For example purposes only. This InMemory implementation only operates on the expression;
+                 * however, some implementations may operate on the command itself, and thus return a specific
+                 * response, validating the command if required.
+                 */
+                var translationResult =
+                    CommandTranslator.Translate(command);
 
                 var queryable =
                     await
