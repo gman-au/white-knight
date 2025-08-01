@@ -39,7 +39,7 @@ namespace White.Knight.InMemory.Translator
                 var query = $"RUN QUERY OF {typeof(TD).Name.ToUpper()} {Translate(specification)} FILTER BY X Y Z";
 
                 _logger
-                    .LogDebug("Translated Query: ({specification}) [{query}]", specification.GetType().Name, query);
+                    .LogDebug("SUCCESS translating Query: ({specification}) [{query}]", specification.GetType().Name, query);
 
                 return new InMemoryTranslationResult
                 {
@@ -49,7 +49,7 @@ namespace White.Knight.InMemory.Translator
             catch (Exception e) when (e is NotImplementedException or UnparsableSpecificationException)
             {
                 _logger
-                    .LogDebug("Error translating Query: ({specification})", specification.GetType().Name);
+                    .LogDebug("ERROR translating Query: ({specification})", specification.GetType().Name);
 
                 throw;
             }
@@ -79,7 +79,7 @@ namespace White.Knight.InMemory.Translator
                 SpecificationByEquals<TD, Guid> eq => $" {eq.Property.Name} = {eq.Value} ",
                 SpecificationByAnd<TD> and => $"( {Translate(and.Left)} AND {Translate(and.Right)} )",
                 SpecificationByOr<TD> or => $"( {Translate(or.Left)} AND {Translate(or.Right)} )",
-                SpecificationByNot<TD> not => $"NOT ( {Translate(not.Spec)} )",
+                SpecificationByNot<TD> => throw new UnparsableSpecificationException(),
                 SpecificationByTextStartsWith<TD> text => $" STARTSWITH {text.Value} )",
                 SpecificationByTextContains<TD> text => $" CONTAINS {text.Value} )",
                 SpecificationThatIsNotCompatible<TD> => throw new UnparsableSpecificationException(),

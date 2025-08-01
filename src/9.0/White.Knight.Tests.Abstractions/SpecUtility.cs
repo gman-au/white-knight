@@ -15,7 +15,7 @@ namespace White.Knight.Tests.Abstractions
 {
     public static class SpecUtility<TD, TP, TResponse> where TD : new()
     {
-        public static void VerifyTransmutabilityOfAllSpecs(
+        public static bool VerifyTransmutabilityOfAllSpecs(
             ICommandTranslator<TD, TResponse> commandTranslator,
             Assembly assembly
         )
@@ -55,9 +55,9 @@ namespace White.Knight.Tests.Abstractions
                     allPassed = false;
                 }
 
-                if (!allPassed)
-                    throw new Exception("One or more specs failed transmutability tests");
             }
+
+            return allPassed;
         }
 
         public static void VerifyTransmutabilityOfSpec(

@@ -9,10 +9,11 @@ namespace White.Knight.Tests.Abstractions.Spec
     {
         protected ICommandTranslator<Customer, TResponse> Sut;
 
-        public virtual void ActVerifyTransmutabilityOfAssembly()
+        public virtual bool ActVerifyTransmutabilityOfAssembly()
         {
-            SpecUtility<Customer, Customer, TResponse>
-                .VerifyTransmutabilityOfAllSpecs(Sut, SpecificationAssembly);
+            return
+                SpecUtility<Customer, Customer, TResponse>
+                    .VerifyTransmutabilityOfAllSpecs(Sut, SpecificationAssembly);
         }
 
         public virtual void ActVerifyUntransmutableSpec()

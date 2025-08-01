@@ -2,7 +2,7 @@
 {
     public interface ISpecificationTestContext
     {
-        void ActVerifyTransmutabilityOfAssembly();
+        bool ActVerifyTransmutabilityOfAssembly();
 
         void ActVerifyUntransmutableSpec();
 
