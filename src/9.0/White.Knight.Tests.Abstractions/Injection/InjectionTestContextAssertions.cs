@@ -15,14 +15,14 @@ namespace White.Knight.Tests.Abstractions.Injection
             Assert.NotNull(Sut.GetService<IKeylessRepository<Address>>());
         }
 
-        public virtual void AssertExceptionWrapperResolved()
+        public virtual void AssertExceptionRethrowerResolved()
         {
-            Assert.NotNull(Sut.GetService<IRepositoryExceptionWrapper>());
+            Assert.NotNull(Sut.GetService<IRepositoryExceptionRethrower>());
         }
 
-        public virtual void AssertExceptionWrapperNotResolved()
+        public virtual void AssertExceptionRethrowerNotResolved()
         {
-            Assert.Null(Sut.GetService<IRepositoryExceptionWrapper>());
+            Assert.Null(Sut.GetService<IRepositoryExceptionRethrower>());
         }
 
         public virtual void AssertLoggerFactoryResolved()
@@ -30,13 +30,13 @@ namespace White.Knight.Tests.Abstractions.Injection
             throw new NotImplementedException("Override this method in your implementation");
         }
 
-        public virtual void AssertRepositoryOptionsResolved()
+        public virtual void AssertRepositoryFeaturesResolved()
         {
-            // var options =
-            //     _sut
-            //         .GetRequiredService<CsvRepositoryOptions<Address>>();
-            //
-            // Assert.NotNull(options.ExceptionWrapper);
+            var options =
+                Sut
+                    .GetRequiredService<IRepositoryFeatures>();
+
+            Assert.NotNull(options);
         }
     }
 }

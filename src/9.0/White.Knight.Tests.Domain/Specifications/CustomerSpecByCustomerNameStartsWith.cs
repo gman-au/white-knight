@@ -1,7 +1,7 @@
-﻿using White.Knight.Abstractions.Specifications;
+﻿using White.Knight.Domain;
 
 namespace White.Knight.Tests.Domain.Specifications
 {
     public class CustomerSpecByCustomerNameStartsWith(string value)
-        : SpecificationByTextStartsWith<Customer>(value, o => o.CustomerName);
+        : SpecificationByTextStartsWith<Customer>(o => o.CustomerName, value);
 }

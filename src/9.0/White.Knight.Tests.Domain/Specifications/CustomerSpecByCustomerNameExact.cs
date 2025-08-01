@@ -1,7 +1,7 @@
-﻿using White.Knight.Abstractions.Specifications;
+﻿using White.Knight.Domain;
 
 namespace White.Knight.Tests.Domain.Specifications
 {
     public class CustomerSpecByCustomerNameExact(string value)
-        : SpecificationByTextExact<Customer>(value, o => o.CustomerName);
+        : SpecificationByEquals<Customer, string>(o => o.CustomerName, value);
 }

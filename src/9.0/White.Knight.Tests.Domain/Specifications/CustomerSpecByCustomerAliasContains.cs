@@ -1,7 +1,7 @@
-﻿using White.Knight.Abstractions.Specifications;
+﻿using White.Knight.Domain;
 
 namespace White.Knight.Tests.Domain.Specifications
 {
     public class CustomerSpecByCustomerAliasContains(string value)
-        : SpecificationByTextContains<Customer>(value, o => o.CustomerAlias);
+        : SpecificationByTextContains<Customer>(o => o.CustomerAlias, value);
 }

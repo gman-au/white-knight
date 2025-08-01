@@ -2,15 +2,15 @@
 using System.Linq;
 using System.Linq.Expressions;
 using White.Knight.Abstractions.Command;
+using White.Knight.Domain;
 using White.Knight.Domain.Options;
 using White.Knight.Interfaces.Command;
-using White.Knight.Interfaces.Spec;
 
 namespace White.Knight.Abstractions.Fluent
 {
 	public static class FluentQueryEx
 	{
-		public static IQueryCommand<TD, TD> ToQueryCommand<TD>(this ISpecification<TD> specification) => new QueryCommand<TD, TD>
+		public static IQueryCommand<TD, TD> ToQueryCommand<TD>(this Specification<TD> specification) => new QueryCommand<TD, TD>
 		{
 			Specification = specification,
 			ProjectionOptions = new ProjectionOptions<TD, TD> { Projection = o => o }

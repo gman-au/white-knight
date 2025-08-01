@@ -8,17 +8,17 @@
 
         void ArrangeAddLogging();
 
-        void ArrangeInjectExceptionWrapper();
+        void ArrangeInjectExceptionRethrower();
 
         void ActLoadServiceProvider();
 
         void AssertRepositoryResolved();
 
-        void AssertExceptionWrapperResolved();
+        void AssertExceptionRethrowerResolved();
 
-        void AssertExceptionWrapperNotResolved();
+        void AssertExceptionRethrowerNotResolved();
 
-        void AssertRepositoryOptionsResolved();
+        void AssertRepositoryFeaturesResolved();
 
         void AssertLoggerFactoryResolved();
     }

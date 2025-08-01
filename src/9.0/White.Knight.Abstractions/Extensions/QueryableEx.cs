@@ -22,8 +22,7 @@ namespace White.Knight.Abstractions.Extensions
 
             var total =
                 set
-                    .Where(specification?.ToExpression() ?? (o => true))
-                    .Count();
+                    .Count(o => specification == null || specification.IsSatisfiedBy(o));
 
             var results =
                 set
@@ -70,7 +69,7 @@ namespace White.Knight.Abstractions.Extensions
 
             var results =
                 set
-                    .Where(specification.ToExpression())
+                    .Where(o => specification.IsSatisfiedBy(o))
                     .AddNavigation(navigationStrategy)
                     .AddSorting(
                         orderBy,

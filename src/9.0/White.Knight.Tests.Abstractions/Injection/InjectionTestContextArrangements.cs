@@ -32,10 +32,10 @@ namespace White.Knight.Tests.Abstractions.Injection
                 .AddLogging();
         }
 
-        public virtual void ArrangeInjectExceptionWrapper()
+        public virtual void ArrangeInjectExceptionRethrower()
         {
             ServiceCollection
-                .AddRepositoryExceptionWrapper();
+                .AddRepositoryExceptionRethrower();
         }
     }
 }
