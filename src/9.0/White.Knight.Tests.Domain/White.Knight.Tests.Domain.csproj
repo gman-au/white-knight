@@ -22,7 +22,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj" />
+        <ProjectReference Include="..\White.Knight.Abstractions\White.Knight.Abstractions.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

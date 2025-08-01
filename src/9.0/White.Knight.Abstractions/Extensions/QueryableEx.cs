@@ -12,7 +12,7 @@ namespace White.Knight.Abstractions.Extensions
 {
     public static class QueryableEx
     {
-        public static async Task<RepositoryResult<TP>> PerformCommandQueryAsync<TD, TP>(
+        public static async Task<RepositoryResult<TP>> ApplyCommandQueryAsync<TD, TP>(
             this IQueryable<TD> set,
             IQueryCommand<TD, TP> command
         )
@@ -22,8 +22,7 @@ namespace White.Knight.Abstractions.Extensions
 
             var total =
                 set
-                    .Where(specification?.ToExpression() ?? (o => true))
-                    .Count();
+                    .Count(o => specification == null || specification.IsSatisfiedBy(o));
 
             var results =
                 set
@@ -70,7 +69,7 @@ namespace White.Knight.Abstractions.Extensions
 
             var results =
                 set
-                    .Where(specification.ToExpression())
+                    .Where(o => specification.IsSatisfiedBy(o))
                     .AddNavigation(navigationStrategy)
                     .AddSorting(
                         orderBy,

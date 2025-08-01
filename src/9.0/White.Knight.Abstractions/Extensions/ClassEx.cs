@@ -21,121 +21,128 @@ namespace White.Knight.Abstractions.Extensions
 
             if (targetEntity == null) return sourceEntity;
 
+            // Set the initial values to the (source) entity
+            foreach (var propertyInfo in entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            {
+                var value =
+                    propertyInfo
+                        .GetValue(sourceEntity);
+
+                propertyInfo
+                    .SetValue(
+                        entityToCommit,
+                        value,
+                        null
+                    );
+            }
+
+            ApplyVersionToEntityProperties(
+                entityToCommit,
+                sourceEntity,
+                targetEntity,
+                fieldsToModify
+            );
+
+            ApplyVersionToEntityProperties(
+                entityToCommit,
+                targetEntity,
+                sourceEntity,
+                fieldsToPreserve
+            );
+
+            return entityToCommit;
+        }
+
+        private static void ApplyVersionToEntityProperties<T>(
+            T workingEntity,
+            T valuesEntity,
+            T fallbackEntity,
+            Expression<Func<T, object>>[] fieldsToIterate
+        )
+        {
+            var entityType = typeof(T);
+
             var modifiedFields = new List<string>();
 
-            // Set the initial values to the entity
+            if (!(fieldsToIterate ?? Enumerable.Empty<Expression<Func<T, object>>>()).Any())
+                return;
+
+            foreach (var field in fieldsToIterate)
+            {
+                var propertyInfo =
+                    ExtractPropertyInfo<T>(field.Body);
+
+                var value =
+                    field
+                        .Compile()
+                        .Invoke(valuesEntity);
+
+                propertyInfo
+                    .SetValue(
+                        workingEntity,
+                        value,
+                        null
+                    );
+
+                modifiedFields
+                    .Add(propertyInfo.Name);
+            }
+
+            // Set the remainder to the fallback values
             foreach (var propertyInfo in entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
                 if (!modifiedFields.Contains(propertyInfo.Name))
                 {
                     var value =
                         propertyInfo
-                            .GetValue(sourceEntity);
+                            .GetValue(fallbackEntity);
 
                     propertyInfo
                         .SetValue(
-                            entityToCommit,
+                            workingEntity,
                             value,
                             null
                         );
                 }
+        }
 
-            if ((fieldsToModify ?? Enumerable.Empty<Expression<Func<T, object>>>()).Any())
+        private static PropertyInfo ExtractPropertyInfo<T>(Expression fieldBody)
+        {
+            var entityType = typeof(T);
+
+            PropertyInfo propertyInfo = null;
+
+            if (fieldBody is MemberExpression memberExpression)
             {
-                foreach (var field in fieldsToModify)
-                    if (field.Body is MemberExpression memberExpression)
+                var member =
+                    memberExpression
+                        .Member;
+
+                propertyInfo =
+                    entityType
+                        .GetProperty(member.Name);
+
+                return propertyInfo;
+            }
+
+            if (fieldBody is UnaryExpression unaryExpression)
+                if (unaryExpression.NodeType == ExpressionType.Convert)
+                    if (unaryExpression.Operand is MemberExpression convertMemberExpression)
                     {
                         var member =
-                            memberExpression
+                            convertMemberExpression
                                 .Member;
 
-                        var value =
-                            field
-                                .Compile()
-                                .Invoke(sourceEntity);
-
-                        var propertyInfo =
+                        propertyInfo =
                             entityType
                                 .GetProperty(member.Name);
 
-                        if (propertyInfo == null) continue;
-
-                        propertyInfo
-                            .SetValue(
-                                entityToCommit,
-                                value,
-                                null
-                            );
-
-                        modifiedFields
-                            .Add(propertyInfo.Name);
+                        return propertyInfo;
                     }
 
-                // Set the remainder to the targetEntity values
-                foreach (var propertyInfo in entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-                    if (!modifiedFields.Contains(propertyInfo.Name))
-                    {
-                        var value =
-                            propertyInfo
-                                .GetValue(targetEntity);
+            if (propertyInfo == null)
+                throw new Exception($"Could not apply iterative field strategy to object of type {fieldBody.NodeType}");
 
-                        propertyInfo
-                            .SetValue(
-                                entityToCommit,
-                                value,
-                                null
-                            );
-                    }
-            }
-
-            if ((fieldsToPreserve ?? Enumerable.Empty<Expression<Func<T, object>>>()).Any())
-            {
-                foreach (var field in fieldsToPreserve)
-                    if (field.Body is MemberExpression memberExpression)
-                    {
-                        var member =
-                            memberExpression
-                                .Member;
-
-                        var value =
-                            field
-                                .Compile()
-                                .Invoke(targetEntity);
-
-                        var propertyInfo =
-                            entityType
-                                .GetProperty(member.Name);
-
-                        if (propertyInfo == null) continue;
-
-                        propertyInfo
-                            .SetValue(
-                                entityToCommit,
-                                value,
-                                null
-                            );
-
-                        modifiedFields
-                            .Add(propertyInfo.Name);
-                    }
-
-                // Set the remainder to the entity values
-                foreach (var propertyInfo in entityType.GetProperties(BindingFlags.Instance | BindingFlags.Public))
-                    if (!modifiedFields.Contains(propertyInfo.Name))
-                    {
-                        var value =
-                            propertyInfo
-                                .GetValue(sourceEntity);
-
-                        propertyInfo
-                            .SetValue(
-                                entityToCommit,
-                                value,
-                                null
-                            );
-                    }
-            }
-
-            return entityToCommit;
+            return propertyInfo;
         }
     }
 }

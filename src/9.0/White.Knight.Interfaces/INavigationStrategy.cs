@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 
 namespace White.Knight.Interfaces
 {
-	public interface INavigationStrategy<T>
-	{
-		Expression<Func<IQueryable<T>, IQueryable<T>>> GetStrategy();
-	}
+    public interface INavigationStrategy<T>
+    {
+        Expression<Func<IQueryable<T>, IQueryable<T>>> GetStrategy();
+    }
 }

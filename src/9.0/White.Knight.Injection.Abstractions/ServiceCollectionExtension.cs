@@ -9,6 +9,14 @@ namespace White.Knight.Injection.Abstractions
 {
     public static class ServiceCollectionExtension
     {
+        public static IServiceCollection AddRepositoryFeatures(this IServiceCollection services)
+        {
+            services
+                .AddTransient<IRepositoryFeatures, RepositoryFeatures>();
+
+            return services;
+        }
+
         public static IServiceCollection AddAttributedRepositories<TA>(
             this IServiceCollection services,
             Assembly repositoryAssembly
@@ -59,10 +67,10 @@ namespace White.Knight.Injection.Abstractions
             return services;
         }
 
-        public static IServiceCollection AddRepositoryExceptionWrapper(this IServiceCollection services)
+        public static IServiceCollection AddRepositoryExceptionRethrower(this IServiceCollection services)
         {
             services
-                .AddTransient<IRepositoryExceptionWrapper, RepositoryExceptionWrapper>();
+                .AddTransient<IRepositoryExceptionRethrower, RepositoryExceptionRethrower>();
 
             return services;
         }

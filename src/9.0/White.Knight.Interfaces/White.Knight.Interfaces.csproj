@@ -5,11 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\White.Knight.Domain\White.Knight.Domain.csproj" />
+        <ProjectReference Include="..\White.Knight.Domain\White.Knight.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6"/>
     </ItemGroup>
 
 </Project>

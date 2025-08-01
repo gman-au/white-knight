@@ -5,11 +5,13 @@ namespace White.Knight.Tests.Abstractions.Extensions
 {
     internal static class RecordEx
     {
-        public static RepositoryResult<T> ToMockResults<T>(T record) where T : new() =>
-            new()
+        public static RepositoryResult<T> ToMockResults<T>(T record) where T : new()
+        {
+            return new RepositoryResult<T>
             {
                 Records = new List<T> { record },
                 Count = record == null ? 0 : 1
             };
+        }
     }
 }

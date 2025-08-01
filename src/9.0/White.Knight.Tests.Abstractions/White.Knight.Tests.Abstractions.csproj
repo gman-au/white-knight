@@ -54,8 +54,8 @@
     <ItemGroup>
         <None Include="$(OutputPath)White.Knight.*.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
         <None Include="$(OutputPath)White.Knight.*.dll" Pack="true" PackagePath="lib\$(TargetFramework)"/>
-        <None Include="$(OutputPath)White.Knight.*.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)" />
-        <None Include="$(OutputPath)White.Knight.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)" />
+        <None Include="$(OutputPath)White.Knight.*.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)"/>
+        <None Include="$(OutputPath)White.Knight.*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)"/>
     </ItemGroup>
 
 </Project>

@@ -9,9 +9,9 @@ namespace White.Knight.Tests.Abstractions.Repository
 {
     public partial class RepositoryTestContextBase
     {
+        protected RepositoryResult<ProjectedCustomer> ProjectedResults;
         protected Customer Result;
         protected RepositoryResult<Customer> Results;
-        protected RepositoryResult<ProjectedCustomer> ProjectedResults;
 
         public void AssertKeyRecordIsReturned()
         {

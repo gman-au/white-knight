@@ -2,8 +2,8 @@
 
 namespace White.Knight.Interfaces
 {
-	public interface IRepositoryException
-	{
-		bool IsApplicable(Exception exception);
-	}
+    public interface IRepositoryException
+    {
+        bool IsApplicable(Exception exception);
+    }
 }

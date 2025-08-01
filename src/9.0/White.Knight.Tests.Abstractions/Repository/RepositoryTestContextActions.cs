@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using White.Knight.Abstractions.Extensions;
 using White.Knight.Abstractions.Fluent;
-using White.Knight.Abstractions.Specifications;
+using White.Knight.Domain;
 using White.Knight.Interfaces;
 using White.Knight.Tests.Abstractions.Extensions;
 using White.Knight.Tests.Domain;
@@ -95,19 +94,15 @@ namespace White.Knight.Tests.Abstractions.Repository
                     Sut
                         .QueryAsync
                         (
-                            new CustomerSpecByCustomerNumber
-                                    (100)
-                                .Or
-                                (
-                                    new CustomerSpecByCustomerNumber
-                                            (200)
-                                        .Or
-                                        (
-                                            new CustomerSpecByCustomerNumber
-                                                (250)
-                                        )
-                                )
-                                .ToQueryCommand()
+                            (
+                                new CustomerSpecByCustomerNumber
+                                    (100) |
+                                new CustomerSpecByCustomerNumber
+                                    (200) |
+                                new CustomerSpecByCustomerNumber
+                                    (250)
+                            )
+                            .ToQueryCommand()
                         );
         }
 
@@ -142,14 +137,13 @@ namespace White.Knight.Tests.Abstractions.Repository
                     Sut
                         .QueryAsync
                         (
-                            new CustomerSpecByCustomerName
-                                    ("Arthur")
-                                .And
-                                (
-                                    new CustomerSpecByCustomerNumber
-                                        (400)
-                                )
-                                .ToQueryCommand()
+                            (
+                                new CustomerSpecByCustomerName
+                                    ("Arthur") &
+                                new CustomerSpecByCustomerNumber
+                                    (400)
+                            )
+                            .ToQueryCommand()
                         );
         }
 
@@ -358,8 +352,7 @@ namespace White.Knight.Tests.Abstractions.Repository
                         ((int)CustomerTypeEnum.New)
                     .ToQueryCommand()
                     .WithProjection
-                    (
-                        o => new ProjectedCustomer
+                    (o => new ProjectedCustomer
                         {
                             CustomerId = o.CustomerId,
                             CustomerName = o.CustomerName

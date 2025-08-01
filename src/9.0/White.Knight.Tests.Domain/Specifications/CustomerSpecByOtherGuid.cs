@@ -1,8 +1,8 @@
 ﻿using System;
-using White.Knight.Abstractions.Specifications;
+using White.Knight.Domain;
 
 namespace White.Knight.Tests.Domain.Specifications
 {
     public class CustomerSpecByOtherGuid(Guid value)
-        : SpecificationByEquals<Customer>(value, o => o.OtherGuid);
+        : SpecificationByEquals<Customer, Guid>(o => o.OtherGuid, value);
 }

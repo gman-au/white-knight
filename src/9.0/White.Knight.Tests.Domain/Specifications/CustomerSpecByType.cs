@@ -1,7 +1,7 @@
-﻿using White.Knight.Abstractions.Specifications;
+﻿using White.Knight.Domain;
 
 namespace White.Knight.Tests.Domain.Specifications
 {
     public class CustomerSpecByType(int value)
-        : SpecificationByEquals<Customer>(value, o => o.CustomerType);
+        : SpecificationByEquals<Customer, int>(o => o.CustomerType, value);
 }
