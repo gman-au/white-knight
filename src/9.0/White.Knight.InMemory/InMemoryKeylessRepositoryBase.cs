@@ -43,7 +43,7 @@ namespace White.Knight.InMemory
                 var results =
                     await
                         queryable
-                            .PerformCommandQueryAsync(command);
+                            .ApplyCommandQueryAsync(command);
 
                 Logger
                     .LogDebug("Queried records of type [{type}] in {ms} ms", typeof(TD).Name, Stopwatch.ElapsedMilliseconds);
