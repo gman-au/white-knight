@@ -13,14 +13,14 @@ namespace White.Knight.Tests.Abstractions.Repository
     public partial class RepositoryTestContextBase
     {
         private AbstractedRepositoryTestData _abstractedRepositoryTestData;
-        private IServiceProvider _serviceProvider;
+        protected IServiceProvider ServiceProvider;
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
 
         public async Task ArrangeRepositoryDataAsync()
         {
             var testHarness =
-                _serviceProvider
+                ServiceProvider
                     .GetRequiredService<ITestHarness>();
 
             _abstractedRepositoryTestData =
@@ -51,12 +51,12 @@ namespace White.Knight.Tests.Abstractions.Repository
 
         protected void LoadServiceProvider()
         {
-            _serviceProvider =
+            ServiceProvider =
                 ServiceCollection
                     .BuildServiceProvider();
 
             Sut =
-                _serviceProvider
+                ServiceProvider
                     .GetRequiredService<IRepository<Customer>>();
         }
     }
