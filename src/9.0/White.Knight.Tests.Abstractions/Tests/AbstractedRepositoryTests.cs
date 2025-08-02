@@ -64,7 +64,7 @@ namespace White.Knight.Tests.Abstractions.Tests
                     .ActSearchWithPageSizeTwoAsync();
 
             context
-                .AssertRecordCount(4);
+                .AssertRecordCount(2);
         }
 
         [Fact]
