@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Threading.Tasks;
 using White.Knight.InMemory.Injection;
 using White.Knight.InMemory.Tests.Integration.Repositories;
 using White.Knight.Tests.Abstractions;
@@ -37,6 +38,22 @@ namespace White.Knight.InMemory.Tests.Integration
 
                 LoadServiceProvider();
             }
+        }
+
+        // Example of an overridden test
+        [Fact]
+        public override async Task Test_Search_Split_Page()
+        {
+            await
+                GetContext()
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                GetContext()
+                    .ActSearchWithPageSizeTwoAsync();
+
+            GetContext()
+                .AssertRecordCount(4);
         }
     }
 }

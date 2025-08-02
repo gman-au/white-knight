@@ -4,6 +4,8 @@ namespace White.Knight.Tests.Abstractions.Tests
 {
     public abstract class AbstractedInjectionTests(IInjectionTestContext context)
     {
+        protected IInjectionTestContext GetContext() => context;
+
         [Fact]
         public void Can_resolve_repository_with_options()
         {
