@@ -5,6 +5,8 @@ namespace White.Knight.Tests.Abstractions.Tests
 {
     public abstract class AbstractedSpecificationTests(ISpecificationTestContext context)
     {
+        protected ISpecificationTestContext GetContext() => context;
+
         [SkippableFact]
         public void Can_verify_transmutability_of_all_specifications()
         {

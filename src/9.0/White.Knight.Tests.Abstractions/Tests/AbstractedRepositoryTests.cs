@@ -5,6 +5,8 @@ namespace White.Knight.Tests.Abstractions.Tests
 {
     public abstract class AbstractedRepositoryTests(IRepositoryTestContext context)
     {
+        protected IRepositoryTestContext GetContext() => context;
+
         [Fact]
         public virtual async Task Test_Retrieve_Single_Record()
         {
