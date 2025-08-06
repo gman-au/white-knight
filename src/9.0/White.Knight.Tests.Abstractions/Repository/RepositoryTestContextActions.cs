@@ -189,6 +189,19 @@ namespace White.Knight.Tests.Abstractions.Repository
                         );
         }
 
+        public virtual async Task ActSearchByNameExactNotAsync()
+        {
+            Results =
+                await
+                    Sut
+                        .QueryAsync
+                        (
+                            new CustomerSpecByCustomerNameNot
+                                    ("Arthur")
+                                .ToQueryCommand()
+                        );
+        }
+
         public virtual async Task ActSearchByNameContainsAsync()
         {
             Results =

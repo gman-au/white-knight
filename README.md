@@ -1,6 +1,6 @@
 # White Knight
 <p align="center">
-<img style="border-radius:10px;" alt="white_knight" width="300" src="https://github.com/user-attachments/assets/bdb336b9-902c-4b1c-99bc-3bfa2a8e9dde" />
+<img style="border-radius:10px;" alt="white_knight" width="300" src="https://github.com/user-attachments/assets/1858bacb-ca86-4d79-8011-6fdf5ba80235" />
 </p>
 
 ![NuGet Version](https://img.shields.io/nuget/v/White.Knight?label=White.Knight)

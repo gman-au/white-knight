@@ -63,8 +63,9 @@ namespace White.Knight.Tests.Abstractions.Tests
                 context
                     .ActSearchWithPageSizeTwoAsync();
 
+            // total is the total records after *filtering*, not after paging
             context
-                .AssertRecordCount(2);
+                .AssertRecordCount(4);
         }
 
         [Fact]
@@ -185,6 +186,21 @@ namespace White.Knight.Tests.Abstractions.Tests
 
             context
                 .AssertRecordCount(2);
+        }
+
+        [Fact]
+        public virtual async Task Test_Name_Exactly_Not()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActSearchByNameExactNotAsync();
+
+            context
+                .AssertExactlyNotRecordCount();
         }
 
         [Fact]
