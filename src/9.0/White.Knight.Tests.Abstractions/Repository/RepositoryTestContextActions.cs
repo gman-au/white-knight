@@ -189,6 +189,19 @@ namespace White.Knight.Tests.Abstractions.Repository
                         );
         }
 
+        public virtual async Task ActSearchByNameExactNotAsync()
+        {
+            Results =
+                await
+                    Sut
+                        .QueryAsync
+                        (
+                            new CustomerSpecByCustomerNameNot
+                                    ("Arthur")
+                                .ToQueryCommand()
+                        );
+        }
+
         public virtual async Task ActSearchByNameContainsAsync()
         {
             Results =
@@ -364,6 +377,18 @@ namespace White.Knight.Tests.Abstractions.Repository
                     Sut
                         .QueryAsync
                             (command);
+        }
+
+        public virtual async Task ActSearchWithUnparsableSpec()
+        {
+            Results =
+                await
+                    Sut
+                        .QueryAsync
+                        (
+                            new SpecificationThatIsNotCompatible<Customer>()
+                                .ToQueryCommand()
+                        );
         }
     }
 }

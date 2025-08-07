@@ -30,6 +30,8 @@ namespace White.Knight.Tests.Abstractions
 
         Task ActSearchByNameExactAsync();
 
+        Task ActSearchByNameExactNotAsync();
+
         Task ActSearchByNameContainsAsync();
 
         Task ActSearchByNameStartsWithAsync();
@@ -69,5 +71,7 @@ namespace White.Knight.Tests.Abstractions
         void AssertDeletedRecordNotPresent();
 
         void AssertRecordsAreProjectedWithoutNesting();
+
+        void AssertExactlyNotRecordCount();
     }
 }

@@ -79,7 +79,7 @@ namespace White.Knight.InMemory.Translator
                 SpecificationByEquals<TD, Guid> eq => $" {eq.Property.Name} = {eq.Value} ",
                 SpecificationByAnd<TD> and => $"( {Translate(and.Left)} AND {Translate(and.Right)} )",
                 SpecificationByOr<TD> or => $"( {Translate(or.Left)} AND {Translate(or.Right)} )",
-                SpecificationByNot<TD> => throw new UnparsableSpecificationException(),
+                SpecificationByNot<TD> not => $" NOT ({Translate(not.Spec)})",
                 SpecificationByTextStartsWith<TD> text => $" STARTSWITH {text.Value} )",
                 SpecificationByTextContains<TD> text => $" CONTAINS {text.Value} )",
                 SpecificationThatIsNotCompatible<TD> => throw new UnparsableSpecificationException(),

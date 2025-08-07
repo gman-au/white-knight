@@ -181,5 +181,21 @@ namespace White.Knight.Tests.Abstractions.Repository
 
             Assert.Null(customer.Orders);
         }
+
+        public void AssertExactlyNotRecordCount()
+        {
+            Assert.NotEmpty
+                (Results?.Records ?? []);
+            Assert.Equal
+            (
+                2,
+                Results?.Count
+            );
+            Assert.DoesNotContain
+            (
+                Results.Records,
+                r => r.CustomerName == "Arthur"
+            );
+        }
     }
 }

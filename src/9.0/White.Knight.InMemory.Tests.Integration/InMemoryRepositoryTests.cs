@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
+using White.Knight.Injection.Abstractions;
 using White.Knight.InMemory.Injection;
+using White.Knight.InMemory.Options;
 using White.Knight.InMemory.Tests.Integration.Repositories;
 using White.Knight.Tests.Abstractions;
 using White.Knight.Tests.Abstractions.Extensions;
@@ -34,6 +36,7 @@ namespace White.Knight.InMemory.Tests.Integration
                     .ArrangeXunitOutputLogging(testOutputHelper);
 
                 ServiceCollection
+                    .AddRepositoryFeatures<InMemoryRepositoryConfigurationOptions>(Configuration)
                     .AddInMemoryRepositoryFeatures();
 
                 LoadServiceProvider();
