@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using White.Knight.Abstractions.Extensions;
 using White.Knight.Domain;
+using White.Knight.Domain.Exceptions;
 using White.Knight.InMemory.Options;
 using White.Knight.InMemory.Translator;
 using White.Knight.Interfaces;
@@ -19,6 +20,7 @@ namespace White.Knight.InMemory
     {
         private readonly IRepositoryExceptionRethrower _repositoryExceptionRethrower = repositoryFeatures.ExceptionRethrower;
         protected readonly ICache<TD> Cache = repositoryFeatures.Cache;
+        protected readonly IClientSideEvaluationHandler ClientSideEvaluationHandler = repositoryFeatures.ClientSideEvaluationHandler;
         protected readonly ICommandTranslator<TD, InMemoryTranslationResult> CommandTranslator = repositoryFeatures.CommandTranslator;
         protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<InMemoryKeylessRepositoryBase<TD>>();
         protected readonly Stopwatch Stopwatch = new();
@@ -42,8 +44,16 @@ namespace White.Knight.InMemory
                  * however, some implementations may operate on the command itself, and thus return a specific
                  * response, validating the command if required.
                  */
-                var translationResult =
-                    CommandTranslator.Translate(command);
+                try
+                {
+                    var translationResult =
+                        CommandTranslator.Translate(command);
+                }
+                catch (UnparsableSpecificationException)
+                {
+                    ClientSideEvaluationHandler
+                        .Handle<TD>();
+                }
 
                 var queryable =
                     await

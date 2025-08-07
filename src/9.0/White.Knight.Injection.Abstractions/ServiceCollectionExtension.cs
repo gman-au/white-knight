@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Abstractions.Features;
+using White.Knight.Abstractions.Options;
 using White.Knight.Interfaces;
 
 namespace White.Knight.Injection.Abstractions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddRepositoryFeatures(this IServiceCollection services)
+        public static IServiceCollection AddRepositoryFeatures<T>(
+            this IServiceCollection services,
+            IConfigurationRoot configuration)
+        where T : RepositoryConfigurationOptions
         {
             services
-                .AddTransient<IRepositoryFeatures, RepositoryFeatures>();
+                .AddTransient<IRepositoryFeatures, RepositoryFeatures>()
+                .AddTransient<IClientSideEvaluationHandler, ClientSideEvaluationHandler>();
+
+            services
+                .Configure<RepositoryConfigurationOptions>(
+                    configuration
+                        .GetSection(typeof(T).Name)
+                );
 
             return services;
         }

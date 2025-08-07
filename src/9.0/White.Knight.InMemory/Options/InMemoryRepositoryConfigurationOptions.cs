@@ -1,6 +1,8 @@
+using White.Knight.Abstractions.Options;
+
 namespace White.Knight.InMemory.Options
 {
-    public class InMemoryRepositoryConfigurationOptions
+    public class InMemoryRepositoryConfigurationOptions : RepositoryConfigurationOptions
     {
     }
 }

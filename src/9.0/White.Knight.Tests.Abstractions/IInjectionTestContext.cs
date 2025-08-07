@@ -10,6 +10,8 @@
 
         void ArrangeInjectExceptionRethrower();
 
+        void ArrangeDefinedClientSideConfiguration();
+
         void ActLoadServiceProvider();
 
         void AssertRepositoryResolved();
@@ -20,6 +22,14 @@
 
         void AssertRepositoryFeaturesResolved();
 
+        void AssertBaseRepositoryOptionsResolvedWithDefault();
+
         void AssertLoggerFactoryResolved();
+
+        void AssertRepositoryOptionsResolvedWithDefault();
+
+        void AssertRepositoryOptionsResolvedWithDefined();
+
+        void AssertBaseRepositoryOptionsResolvedWithDefined();
     }
 }

@@ -37,5 +37,10 @@ namespace White.Knight.Tests.Abstractions.Injection
             ServiceCollection
                 .AddRepositoryExceptionRethrower();
         }
+
+        public virtual void ArrangeDefinedClientSideConfiguration()
+        {
+            throw new NotImplementedException("Override this method in your implementation");
+        }
     }
 }

@@ -378,5 +378,17 @@ namespace White.Knight.Tests.Abstractions.Repository
                         .QueryAsync
                             (command);
         }
+
+        public virtual async Task ActSearchWithUnparsableSpec()
+        {
+            Results =
+                await
+                    Sut
+                        .QueryAsync
+                        (
+                            new SpecificationThatIsNotCompatible<Customer>()
+                                .ToQueryCommand()
+                        );
+        }
     }
 }

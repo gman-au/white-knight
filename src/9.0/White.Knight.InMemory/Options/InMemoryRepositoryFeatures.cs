@@ -8,6 +8,7 @@ namespace White.Knight.InMemory.Options
     public class InMemoryRepositoryFeatures<TD>(
         ICache<TD> cache,
         ICommandTranslator<TD, InMemoryTranslationResult> commandTranslator,
+        IClientSideEvaluationHandler clientSideEvaluationHandler,
         IRepositoryExceptionRethrower exceptionRethrower = null,
         ILoggerFactory loggerFactory = null)
         : IInMemoryRepositoryFeatures<TD>
@@ -17,6 +18,8 @@ namespace White.Knight.InMemory.Options
         public ICommandTranslator<TD, InMemoryTranslationResult> CommandTranslator { get; set; } = commandTranslator;
 
         public IRepositoryExceptionRethrower ExceptionRethrower { get; set; } = exceptionRethrower;
+
+        public IClientSideEvaluationHandler ClientSideEvaluationHandler { get; set; } = clientSideEvaluationHandler;
 
         public ILoggerFactory LoggerFactory { get; set; } = loggerFactory ?? new NullLoggerFactory();
     }
