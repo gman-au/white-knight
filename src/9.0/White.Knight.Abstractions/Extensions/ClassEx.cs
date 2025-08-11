@@ -105,7 +105,7 @@ namespace White.Knight.Abstractions.Extensions
                 }
         }
 
-        private static PropertyInfo ExtractPropertyInfo<T>(Expression fieldBody)
+        public static PropertyInfo ExtractPropertyInfo<T>(Expression fieldBody)
         {
             var entityType = typeof(T);
 
