@@ -111,6 +111,9 @@ namespace White.Knight.Abstractions.Extensions
 
             PropertyInfo propertyInfo = null;
 
+            if (fieldBody is LambdaExpression lambdaExpression)
+                return ExtractPropertyInfo<T>(lambdaExpression.Body);
+
             if (fieldBody is MemberExpression memberExpression)
             {
                 var member =
