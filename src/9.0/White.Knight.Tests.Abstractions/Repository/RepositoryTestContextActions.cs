@@ -160,6 +160,18 @@ namespace White.Knight.Tests.Abstractions.Repository
                         );
         }
 
+        public virtual async Task ActSearchByClientSideForcedEvaluation()
+        {
+            Results =
+                await
+                    Sut
+                        .QueryAsync
+                        (
+                            new CustomerSpecByClientSideValue(2005)
+                                .ToQueryCommand()
+                        );
+        }
+
         public virtual async Task ActSearchByExampleAutoCompleteTextAsync()
         {
             Results =

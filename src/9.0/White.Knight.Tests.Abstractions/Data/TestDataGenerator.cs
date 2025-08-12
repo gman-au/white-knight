@@ -301,6 +301,7 @@ namespace White.Knight.Tests.Abstractions.Data
                         u => u.CustomerNumber,
                         100
                     )
+                    .With(u => u.CustomerCreated, new DateTime(1994, 02, 21))
                     .With
                     (
                         u => u.Orders,
@@ -341,6 +342,7 @@ namespace White.Knight.Tests.Abstractions.Data
                         u => u.CustomerNumber,
                         200
                     )
+                    .With(u => u.CustomerCreated, new DateTime(2021, 06, 14))
                     .With
                     (
                         u => u.Orders,
@@ -378,6 +380,7 @@ namespace White.Knight.Tests.Abstractions.Data
                         u => u.CustomerNumber,
                         300
                     )
+                    .With(u => u.CustomerCreated, new DateTime(2022, 12, 01))
                     .With
                     (
                         u => u.Orders,
@@ -423,6 +426,7 @@ namespace White.Knight.Tests.Abstractions.Data
                         u => u.CustomerNumber,
                         400
                     )
+                    .With(u => u.CustomerCreated, new DateTime(2020, 08, 01))
                     .With
                     (
                         u => u.Orders,

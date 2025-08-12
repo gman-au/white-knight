@@ -337,5 +337,20 @@ namespace White.Knight.Tests.Abstractions.Tests
             context
                 .AssertRecordsAreProjectedWithoutNesting();
         }
+
+        [Fact]
+        public async Task Test_Search_Forced_Client_Side_Evaluation()
+        {
+            await
+                context
+                    .ArrangeRepositoryDataAsync();
+
+            await
+                context
+                    .ActSearchByClientSideForcedEvaluation();
+
+            context
+                .AssertRecordCount(3);
+        }
     }
 }

@@ -50,6 +50,8 @@ namespace White.Knight.Tests.Abstractions
 
         Task ActSearchWithNonNestedProjection();
 
+        Task ActSearchByClientSideForcedEvaluation();
+
         void AssertKeyRecordIsReturned();
 
         void AssertInvalidKeyExceptionWasThrown(Task task);
