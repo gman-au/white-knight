@@ -8,7 +8,7 @@ namespace White.Knight.Tests.Abstractions.Tests
         protected ISpecificationTestContext GetContext() => context;
 
         [SkippableFact]
-        public void Can_verify_transmutability_of_all_specifications()
+        public virtual void Can_verify_transmutability_of_all_specifications()
         {
             var result = context.ActVerifyTransmutabilityOfAssembly();
 
@@ -16,7 +16,7 @@ namespace White.Knight.Tests.Abstractions.Tests
         }
 
         [Fact]
-        public void Throws_untransmutable_specification()
+        public virtual void Throws_untransmutable_specification()
         {
             Assert.Throws<UnparsableSpecificationException>(
                 context.ActVerifyUntransmutableSpec
@@ -24,7 +24,7 @@ namespace White.Knight.Tests.Abstractions.Tests
         }
 
         [Fact]
-        public void Throws_untransmutable_nested_specification()
+        public virtual void Throws_untransmutable_nested_specification()
         {
             Assert.Throws<UnparsableSpecificationException>(
                 context.ActVerifyNestedUntransmutableSpec
