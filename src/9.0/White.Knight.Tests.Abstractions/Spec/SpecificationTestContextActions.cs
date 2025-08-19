@@ -18,8 +18,9 @@ namespace White.Knight.Tests.Abstractions.Spec
 
         public virtual void ActVerifyUntransmutableSpec()
         {
-            SpecUtility<Customer, Customer, TResponse>
-                .VerifyTransmutabilityOfSpec(Sut, typeof(SpecificationThatIsNotCompatible<Customer>));
+            Result =
+                SpecUtility<Customer, Customer, TResponse>
+                    .VerifyTransmutabilityOfSpec(Sut, typeof(SpecificationThatIsNotCompatible<Customer>));
         }
 
         public virtual void ActVerifyNestedUntransmutableSpec()
@@ -29,8 +30,9 @@ namespace White.Knight.Tests.Abstractions.Spec
                 new SpecificationThatIsNotCompatible<Customer>()
             );
 
-            SpecUtility<Customer, Customer, TResponse>
-                .VerifyTransmutabilityOfSpec(Sut, spec);
+            Result =
+                SpecUtility<Customer, Customer, TResponse>
+                    .VerifyTransmutabilityOfSpec(Sut, spec);
         }
     }
 }

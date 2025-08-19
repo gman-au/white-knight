@@ -60,7 +60,7 @@ namespace White.Knight.Tests.Abstractions
             return allPassed;
         }
 
-        public static void VerifyTransmutabilityOfSpec(
+        public static object VerifyTransmutabilityOfSpec(
             ICommandTranslator<TD, TResponse> commandTranslator,
             Type specType
         )
@@ -85,11 +85,12 @@ namespace White.Knight.Tests.Abstractions
                     .With(o => o.ProjectionOptions, (ProjectionOptions<TD, TP>)null)
                     .Create();
 
-            commandTranslator
-                .Translate(command);
+            return
+                commandTranslator
+                    .Translate(command);
         }
 
-        public static void VerifyTransmutabilityOfSpec(
+        public static object VerifyTransmutabilityOfSpec(
             ICommandTranslator<TD, TResponse> commandTranslator,
             Specification<TD> specificationInstance
         )
@@ -105,8 +106,9 @@ namespace White.Knight.Tests.Abstractions
                     .With(o => o.ProjectionOptions, (ProjectionOptions<TD, TP>)null)
                     .Create();
 
-            commandTranslator
-                .Translate(command);
+            return
+                commandTranslator
+                    .Translate(command);
         }
     }
 }

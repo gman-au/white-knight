@@ -14,6 +14,7 @@ namespace White.Knight.Tests.Abstractions.Spec
         protected IConfigurationRoot Configuration;
         protected ServiceCollection ServiceCollection;
         protected Assembly SpecificationAssembly;
+        protected object Result;
 
         protected void LoadTestConfiguration()
         {
