@@ -9,8 +9,8 @@ namespace White.Knight.Tests.Domain
 
         public string CustomerName { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
 
-        public ICollection<ProjectedOrder> ProjectedOrders { get; set; }
+        public ICollection<ProjectedOrder> ProjectedOrders { get; set; } = new List<ProjectedOrder>();
     }
 }

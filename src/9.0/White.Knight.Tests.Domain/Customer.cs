@@ -32,8 +32,8 @@ namespace White.Knight.Tests.Domain
         [JsonPropertyName("not_what_you_expected")]
         public Order FavouriteOrder { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
+        public ICollection<Address> Addresses { get; set; } = new List<Address>();
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

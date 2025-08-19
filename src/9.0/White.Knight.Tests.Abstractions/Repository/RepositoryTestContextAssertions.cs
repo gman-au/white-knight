@@ -179,7 +179,7 @@ namespace White.Knight.Tests.Abstractions.Repository
                     .Records
                     .ElementAt(0);
 
-            Assert.Null(customer.Orders);
+            Assert.Empty(customer.Orders);
         }
 
         public void AssertExactlyNotRecordCount()
