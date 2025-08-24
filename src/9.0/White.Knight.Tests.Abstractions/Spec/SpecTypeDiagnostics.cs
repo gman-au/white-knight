@@ -2,7 +2,7 @@
 
 namespace White.Knight.Tests.Abstractions.Spec
 {
-    internal class SpecTypeDetails
+    public class SpecTypeDiagnostics
     {
         public Type SpecType { get; set; }
 

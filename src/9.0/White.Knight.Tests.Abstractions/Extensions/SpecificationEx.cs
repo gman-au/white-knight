@@ -7,14 +7,14 @@ using White.Knight.Tests.Abstractions.Spec;
 
 namespace White.Knight.Tests.Abstractions.Extensions
 {
-    internal static class SpecificationEx
+    public static class SpecificationEx
     {
-        public static SpecTypeDetails GetSpecTypeDetails<T>(this Specification<T> specification)
+        public static SpecTypeDiagnostics GetSpecTypeDiagnostics<T>(this Specification<T> specification)
         {
-            return GetSpecTypeDetails(specification.GetType());
+            return GetSpecTypeDiagnostics(specification.GetType());
         }
 
-        public static IEnumerable<SpecTypeDetails> GetSpecs(this Assembly assembly)
+        public static IEnumerable<SpecTypeDiagnostics> GetSpecs(this Assembly assembly)
         {
             return
                 assembly
@@ -30,10 +30,10 @@ namespace White.Knight.Tests.Abstractions.Extensions
                                 )
                     )
                     .Select
-                        (GetSpecTypeDetails);
+                        (GetSpecTypeDiagnostics);
         }
 
-        public static SpecTypeDetails GetSpecTypeDetails(this Type specType)
+        public static SpecTypeDiagnostics GetSpecTypeDiagnostics(this Type specType)
         {
             var specInterface =
                 specType
@@ -43,7 +43,7 @@ namespace White.Knight.Tests.Abstractions.Extensions
                         x => x.IsSpecification()
                     );
 
-            return new SpecTypeDetails
+            return new SpecTypeDiagnostics
             {
                 SpecType = specType,
                 ImplementedInterface = specInterface,

@@ -69,7 +69,7 @@ namespace White.Knight.Tests.Abstractions
 
             var specTypeDetails =
                 specType
-                    .GetSpecTypeDetails();
+                    .GetSpecTypeDiagnostics();
 
             var spec =
                 new SpecimenContext

@@ -19,7 +19,7 @@ namespace White.Knight.Abstractions.Fluent
         public static IUpdateCommand<T> OnlyUpdating<T>(
             this IUpdateCommand<T> command,
             params Expression<Func<T, object>>[] inclusions
-        ) where T : new()
+        )
         {
             command.Inclusions = inclusions;
             return command;
@@ -28,7 +28,7 @@ namespace White.Knight.Abstractions.Fluent
         public static IUpdateCommand<T> WithoutUpdating<T>(
             this IUpdateCommand<T> command,
             params Expression<Func<T, object>>[] exclusions
-        ) where T : new()
+        )
         {
             command.Exclusions = exclusions;
             return command;
@@ -38,7 +38,6 @@ namespace White.Knight.Abstractions.Fluent
             this IUpdateCommand<T> command,
             Expression<Func<IQueryable<T>, IQueryable<T>>> navigation
         )
-            where T : new()
         {
             return command
                 .WithStrategy<T, IUpdateCommand<T>>(navigation);
