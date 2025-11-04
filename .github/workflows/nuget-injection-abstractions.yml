@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:      
-      SOLUTION_PATH: ./src/9.0/White.Knight.Injection.Abstractions/
+      SOLUTION_PATH: ./src/White.Knight.Injection.Abstractions/
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
